@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Watch — Sign Of Times</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--dark:#111;--darker:#161616;--peach:#E8C4A0;--peach-light:#F5DEC8;--white:#F9F5F0;--gray:#888880;--border:rgba(232,196,160,0.2);--gold:#F6961B;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:300;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:6px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(246,150,27,0.3);}
+  .nav-logo img{height:90px;width:auto;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
+  .nav-back{color:#F6961B;text-decoration:none;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s;}
+  .nav-back:hover{opacity:1;}
+
+  .watch-page{padding-top:100px;max-width:1200px;margin:0 auto;padding-left:60px;padding-right:60px;padding-bottom:80px;}
+  .breadcrumb{font-size:11px;color:var(--gray);margin-bottom:40px;letter-spacing:.05em;}
+  .breadcrumb a{color:var(--gray);text-decoration:none;transition:color .2s;}
+  .breadcrumb a:hover{color:var(--peach);}
+  .breadcrumb span{margin:0 8px;opacity:.4;}
+
+  .watch-detail{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+
+  /* LEFT — gallery */
+  .gallery-main{position:relative;overflow:hidden;margin-bottom:4px;}
+  .gallery-main img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+  .gallery-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+  .thumb{overflow:hidden;cursor:pointer;opacity:.6;transition:opacity .3s;}
+  .thumb.active,.thumb:hover{opacity:1;}
+  .thumb img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+
+  /* RIGHT — info */
+  .watch-brand{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);margin-bottom:12px;}
+  .watch-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.15;margin-bottom:8px;}
+  .watch-ref{font-size:11px;color:var(--gray);letter-spacing:.1em;margin-bottom:28px;}
+  .watch-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--peach-light);margin-bottom:32px;}
+
+  .spec-table{width:100%;border-collapse:collapse;margin-bottom:32px;}
+  .spec-table tr{border-bottom:1px solid var(--border);}
+  .spec-table td{padding:12px 0;font-size:12px;line-height:1.5;}
+  .spec-table td:first-child{color:var(--gray);width:42%;letter-spacing:.05em;}
+  .spec-table td:last-child{color:var(--white);}
+
+  .watch-desc{font-size:13px;line-height:2;color:rgba(249,245,240,.7);margin-bottom:36px;}
+
+  .actions{display:flex;flex-direction:column;gap:12px;}
+  .btn-primary{display:block;width:100%;padding:16px;background:var(--peach);color:var(--black);border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;text-align:center;text-decoration:none;transition:background .3s;}
+  .btn-primary:hover{background:var(--peach-light);}
+  .btn-secondary{display:block;width:100%;padding:15px;border:1px solid var(--border);color:var(--white);background:none;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:border-color .3s,color .3s;}
+  .btn-secondary:hover{border-color:var(--peach);color:var(--peach);}
+
+  .condition-bar{display:flex;gap:6px;margin-top:24px;align-items:center;}
+  .condition-dot{width:8px;height:8px;border-radius:50%;background:var(--border);}
+  .condition-dot.filled{background:var(--peach);}
+  .condition-label{font-size:11px;color:var(--gray);margin-left:8px;}
+
+  /* Enquire modal */
+  .modal-overlay{position:fixed;inset:0;background:rgba(10,10,10,.9);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--darker);border:1px solid var(--border);padding:40px;width:100%;max-width:480px;}
+  .modal h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:6px;}
+  .modal h3 em{font-style:italic;color:var(--peach-light);}
+  .modal p{font-size:12px;color:var(--gray);margin-bottom:28px;line-height:1.8;}
+  .modal input,.modal textarea{width:100%;padding:12px 14px;background:var(--black);border:1px solid var(--border);color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;outline:none;margin-bottom:12px;}
+  .modal textarea{min-height:90px;resize:vertical;}
+  .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--white);font-size:22px;cursor:pointer;opacity:.6;}
+  .modal-close:hover{opacity:1;}
+  .modal{position:relative;}
+
+  /* Related */
+  .related{padding:60px;background:var(--darker);border-top:1px solid var(--border);}
+  .related h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;margin-bottom:32px;padding:0 0 0 0;}
+  .related h2 em{font-style:italic;color:var(--peach-light);}
+  .related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .related-card{cursor:pointer;overflow:hidden;}
+  .related-card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .5s;}
+  .related-card:hover img{transform:scale(1.04);}
+  .related-card p{padding:10px 0 4px;font-size:9px;letter-spacing:.2em;color:var(--peach);text-transform:uppercase;}
+  .related-card h4{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;padding-bottom:12px;}
+
+  @media(max-width:900px){
+    nav{padding:12px 20px;}
+    .nav-logo img{height:90px;}
+    .watch-page{padding:90px 20px 48px;}
+    .watch-detail{grid-template-columns:1fr;gap:32px;}
+    .gallery-thumbs{grid-template-columns:repeat(4,1fr);}
+    .related{padding:40px 20px;}
+    .related-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:600px){
+    nav{padding:10px 16px;}
+    .nav-logo img{height:72px;}
+    .watch-page{padding:82px 16px 40px;}
+    .watch-title{font-size:clamp(24px,8vw,40px);}
+    .spec-table td{font-size:11px;padding:10px 0;}
+    .watch-desc{font-size:12px;}
+    .btn-primary,.btn-secondary{font-size:10px;padding:14px;}
+    .related{padding:32px 16px;}
+    .related-grid{grid-template-columns:repeat(2,1fr);gap:2px;}
+    .modal{padding:28px 20px;}
+    .modal input,.modal textarea{font-size:16px;}
+  }
+  nav{
+    position:fixed;top:0;width:100%;z-index:100;
+    padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(10,10,10,0.97);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(246,150,27,0.3);
+  }
+  .nav-logo img{height:104px;width:auto;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
+  .nav-center{display:flex;gap:36px;list-style:none;}
+  .nav-center a{color:#F6961B;text-decoration:none;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s,color .2s;white-space:nowrap;}
+  .nav-center a:hover{opacity:1;color:#fff;}
+  .nav-right{display:flex;align-items:center;gap:20px;}
+  .nav-search{background:none;border:none;cursor:pointer;padding:4px;transition:opacity .2s,transform .2s;opacity:.85;}
+  .nav-search:hover{opacity:1;transform:scale(1.1);}
+  .nav-lang{position:relative;}
+  .lang-custom{position:relative;cursor:pointer;user-select:none;}
+  .lang-trigger{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid #F6961B;color:#F6961B;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.12em;font-weight:500;background:#000;}
+  .lang-trigger svg{flex-shrink:0;transition:transform .2s;}
+  .lang-custom.open .lang-trigger svg{transform:rotate(180deg);}
+  .lang-dropdown{display:none;position:absolute;top:100%;right:0;background:#000;border:1px solid #F6961B;border-top:none;min-width:100%;z-index:999;}
+  .lang-custom.open .lang-dropdown{display:block;}
+  .lang-option{padding:8px 14px;color:#F6961B;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.12em;font-weight:400;transition:background .15s;}
+  .lang-option:hover{background:#F6961B;color:#000;}
+  .lang-option.active{color:#fff;font-weight:500;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .close-menu{display:none;}
+  .hamburger span{width:24px;height:1px;background:#F6961B;display:block;}
+
+  /* ── HERO ── */
+  .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.85) 0%,rgba(10,10,10,.25) 60%,transparent 100%);}
+  .hero-content{position:relative;z-index:2;padding:0 60px 80px;max-width:700px;}
+  .hero-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);margin-bottom:18px;}
+  .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,88px);font-weight:300;line-height:1.05;margin-bottom:24px;}
+  .hero-title em{font-style:italic;color:var(--peach-light);}
+  .hero-sub{font-size:13px;line-height:1.9;color:rgba(249,245,240,.7);margin-bottom:36px;max-width:440px;}
+  .btn-outline{display:inline-block;padding:13px 36px;border:1px solid var(--peach);color:var(--peach);text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;transition:background .3s,color .3s;}
+  .btn-outline:hover{background:var(--peach);color:var(--black);}
+  .btn-solid{display:inline-block;padding:13px 36px;background:#F6961B;color:#0a0a0a;text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;border:1px solid #F6961B;transition:background .3s;}
+  .btn-solid:hover{background:#e0850a;border-color:#e0850a;}
+
+
+
+  /* ── WHO WE ARE ── */
+  .about{padding:48px 60px;background:var(--darker);border:1px solid var(--border);}
+  .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center;}
+  .section-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#F6961B;margin-bottom:16px;}
+  
+  
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);font-weight:300;line-height:1.2;margin-bottom:28px;color:#F9F5F0;}
+  .section-title em{font-style:italic;color:var(--peach-light);}
+  .about-body{font-size:16px;line-height:2;color:rgba(249,245,240,0.75);text-align:center;position:relative;padding:40px 40px 80px;}
+  .quote-open{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(246,150,27,.3);line-height:0;vertical-align:-40px;margin-right:6px;display:inline;}
+  .quote-close{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(246,150,27,.3);line-height:0;vertical-align:-40px;margin-left:6px;display:inline;}
+  .about-body::before{content:'';position:absolute;inset:0;z-index:0;border-radius:2px;background:
+    linear-gradient(to right, #161616 0%, rgba(22,22,22,0.75) 40%, rgba(22,22,22,0.35) 75%, rgba(22,22,22,0.6) 100%),
+    url('images/about_bg.jpg') center/cover no-repeat;opacity:0.6;}
+  .about-body>*{position:relative;z-index:1;}
+  .about-body p+p{margin-top:16px;}
+  .about-body em{font-style:italic;color:var(--peach-light);}
+  .about-img{position:relative;}
+  .about-img img{width:100%;aspect-ratio:3/4;object-fit:cover;}
+  .about-img::before{content:'';position:absolute;top:-14px;left:-14px;width:100%;height:100%;border:1px solid var(--border);z-index:-1;}
+
+  /* ── TIMEPIECES ── */
+  .timepieces{padding:48px 60px 40px;background:#161616;}
+  .timepieces-header{max-width:1200px;margin:0 auto 56px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .timepieces-header .section-title{margin-bottom:0;}
+  .tp-sub{font-size:12px;color:#777;letter-spacing:.08em;max-width:280px;text-align:right;line-height:1.7;}
+  .watches-grid{max-width:1600px;margin:0 auto 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  
+  .watch-card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s ease;display:block;}
+  .watch-card:hover img{transform:scale(1.05);}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .timepieces-cta{max-width:1200px;margin:0 auto;text-align:center;}
+
+  /* ── 3 PROMO CARDS ── */
+  .promo{padding:48px 60px;background:#161616;overflow:hidden;}
+  .promo-grid{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .promo-card{position:relative;overflow:hidden;aspect-ratio:4/5;outline:1.5px solid #F6961B;outline-offset:-1px;}
+  .promo-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.55);}
+  .promo-card:hover img{transform:scale(1.05);filter:brightness(.45);}
+  .promo-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:24px 28px 32px;}
+  .promo-tag{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--peach);margin-bottom:10px;}
+  .promo-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.2;margin-bottom:8px;min-height:62px;display:flex;align-items:flex-end;justify-content:center;}
+  .promo-desc{font-size:11px;color:rgba(249,245,240,.65);line-height:1.7;margin-bottom:20px;}
+  .promo-btn{display:inline-block;padding:10px 24px;border:1px solid rgba(232,196,160,.6);color:var(--peach);font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:background .3s,color .3s;}
+  .promo-btn:hover{background:var(--peach);color:var(--black);}
+
+  /* ── BRANDS ── */
+  .brands{padding:60px;background:#161616;border-top:1px solid rgba(232,196,160,0.2);border-bottom:1px solid rgba(232,196,160,0.2);}
+  .brands-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+  .brand-item{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:#888880;letter-spacing:.1em;transition:color .3s;text-decoration:none;display:inline-block;}
+  .brand-item:hover{color:#F6961B;}
+  .brand-item--stack{text-align:center;line-height:1.1;}
+  .brand-item--stack span{display:block;text-align:center;}
+  .brand-sep{width:1px;height:30px;background:rgba(232,196,160,0.2);}
+
+  /* ── FOOTER ── */
+  footer{padding:48px 60px;background:var(--darker);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo img{height:44px;width:auto;opacity:.85;}
+  .footer-copy{font-size:11px;color:var(--gray);letter-spacing:.06em;}
+  .footer-links{display:flex;gap:24px;}
+  .footer-links a{font-size:11px;color:var(--gray);text-decoration:none;letter-spacing:.1em;transition:color .2s;}
+  .footer-links a:hover{color:var(--peach);}
+
+  /* ── SEARCH OVERLAY ── */
+  .search-overlay{position:fixed;inset:0;background:rgba(10,10,10,.97);z-index:200;display:none;align-items:center;justify-content:center;}
+  .search-overlay.open{display:flex;}
+  .search-box{width:100%;max-width:600px;padding:0 24px;}
+  .search-box input{width:100%;background:none;border:none;border-bottom:1px solid var(--peach);color:var(--white);font-family:'Cormorant Garamond',serif;font-size:32px;padding:16px 0;outline:none;}
+  .search-close{position:absolute;top:32px;right:48px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer;opacity:.7;}
+
+  /* ── MOBILE ── */
+  /* ── TABLET (≤900px) ── */
+  @media(max-width:900px){
+    nav{padding:12px 20px;}
+    .nav-logo img{height:104px;}
+    .nav-center{display:none;}
+    .hamburger{display:flex;}
+    .lang-trigger{padding:5px 10px;font-size:11px;}
+    .lang-dropdown{right:0;}
+    /* Mobile menu overlay */
+    .nav-center{
+      position:fixed;top:0;left:0;right:0;bottom:0;
+      width:100%;height:100dvh;
+      background:#0a0a0a;z-index:500;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:0;
+      transform:translateX(100%);
+      transition:transform .35s cubic-bezier(.77,0,.18,1);
+      list-style:none;
+    }
+    .nav-center.open{transform:translateX(0);}
+    .nav-center li{width:100%;text-align:center;border-bottom:1px solid rgba(246,150,27,.12);}
+    .nav-center li:first-child{border-top:1px solid rgba(246,150,27,.12);}
+    .nav-center a{
+      display:block;padding:22px 40px;
+      font-size:13px;letter-spacing:.25em;text-transform:uppercase;
+      color:#F9F5F0;font-weight:400;
+      transition:color .2s,background .2s;
+    }
+    .nav-center a:hover{color:#F6961B;background:rgba(246,150,27,.05);}
+
+    /* Hamburger → X animation */
+    .hamburger span{transition:transform .3s, opacity .3s;}
+    .hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+    .hamburger.active span:nth-child(2){opacity:0;}
+    .hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+    .close-menu{display:none;}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Sign Of Times"></a>
+  <ul class="nav-center" id="navLinks">
+    <li><a href="index.html#timepieces">New Timepieces</a></li>
+    <li><a href="collection.html">The Collection</a></li>
+    <li><a href="index.html#about">What We Are</a></li>
+    <li><a href="index.html#promo">Services</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-lang">
+      <div class="lang-custom" id="langCustom">
+        <div class="lang-trigger" onclick="toggleLangMenu()">
+          <span id="langCurrent">EN</span>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M0 0l5 6 5-6z" fill="#F6961B"/></svg>
+        </div>
+        <div class="lang-dropdown">
+          <div class="lang-option active" onclick="setLang('en')">EN</div>
+          <div class="lang-option" onclick="setLang('fr')">FR</div>
+          <div class="lang-option" onclick="setLang('ru')">RU</div>
+        </div>
+      </div>
+    </div>
+    <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;align-items:center;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85" aria-label="Instagram">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#F6961B"/></svg>
+    </a>
+    <button class="nav-search" onclick="openSearch()" aria-label="Search">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="8" stroke="#F6961B" stroke-width="1.5" fill="none"/>
+        <line x1="17" y1="17" x2="24" y2="24" stroke="#F6961B" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <button class="close-menu" id="closeMenu">✕</button>
+  </div>
+</nav>
+
+<!-- ENQUIRE MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Enquire about<br><em id="modalWatchName">this piece</em></h3>
+    <p>Fill in your details and we'll get back to you promptly with full information and pricing.</p>
+    <form onsubmit="submitEnquiry(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone (optional)">
+      <input type="hidden" id="modalWatchRef">
+      <textarea placeholder="Your message or any specific questions..."></textarea>
+      <button type="submit" class="btn-primary" style="border:none;">Send Enquiry</button>
+      <p id="modalStatus" style="margin-top:14px;font-size:12px;color:var(--peach);text-align:center;"></p>
+    </form>
+  </div>
+</div>
+
+<div class="watch-page">
+  <p class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="index.html#timepieces">Timepieces</a><span>›</span><span id="bcName">Watch</span></p>
+
+  <div class="watch-detail">
+    <!-- GALLERY -->
+    <div>
+      <div class="gallery-main">
+        <img id="mainImg" src="" alt="">
+      </div>
+      <div class="gallery-thumbs" id="thumbs"></div>
+    </div>
+
+    <!-- INFO -->
+    <div>
+      <p class="watch-brand" id="detailBrand"></p>
+      <h1 class="watch-title" id="detailName"></h1>
+      <p class="watch-ref" id="detailRef"></p>
+      <p class="watch-price" id="detailPrice">Price on request</p>
+
+      <table class="spec-table" id="specTable"></table>
+
+      <p class="watch-desc" id="detailDesc"></p>
+
+      <div class="actions">
+        <a href="#" class="btn-primary" onclick="openModal(); return false;">Enquire About This Piece</a>
+        <a href="index.html#timepieces" class="btn-secondary">← Back to All Timepieces</a>
+      </div>
+
+      <div class="condition-bar" id="conditionBar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED -->
+<div class="related">
+  <h2>More <em>Timepieces</em></h2>
+  <div class="related-grid" id="relatedGrid"></div>
+</div>
+
+<footer style="padding:32px 60px;background:var(--black);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);">
+  <img src="images/logo.png" alt="Sign Of Times" style="height:36px;opacity:.7;">
+  <p style="font-size:11px;color:var(--gray);">© 2026 Sign Of Times</p>
+</footer>
+
+<script>
+const watches = [
+  {id:0,img:'watch03.jpg',imgs:['watch03.jpg','watch04.jpg'],brand:'Patek Philippe',name:'Calatrava · Blue Dial',ref:'Ref. 5119J',price:'Price on request',desc:'A superb example of the timeless Patek Philippe Calatrava, featuring a stunning sunburst blue dial with an integrated mesh bracelet. A rare find in this condition.',specs:{Movement:'Manual wind',Case:'18k White Gold',Dial:'Blue sunburst',Bracelet:'Gold mesh integrated',Year:'c. 1970s',Condition:'Excellent',Papers:'Yes — Full Set'}},
+  {id:1,img:'watch04.jpg',imgs:['watch04.jpg','watch03.jpg'],brand:'Audemars Piguet',name:'Diamond Lattice Dial',ref:'Estate Piece',price:'Price on request',desc:'A rare Audemars Piguet in 18k yellow gold with an extraordinary hand-engraved diamond lattice dial. An exceptional estate piece of the highest order.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Hand-engraved diamond lattice',Year:'c. 1960s',Condition:'Very Good',Papers:'No'}},
+  {id:2,img:'watch05.jpg',imgs:['watch05.jpg'],brand:'Patek Philippe',name:'Golden Ellipse',ref:'Ref. 3548',price:'Price on request',desc:'The iconic Patek Philippe Golden Ellipse with a dark gradient dial. One of the most elegant watch designs of the 20th century.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Dark gradient',Year:'c. 1980s',Condition:'Excellent',Papers:'Box only'}},
+  {id:3,img:'watch06.jpg',imgs:['watch06.jpg'],brand:'Patek Philippe',name:'Calatrava · Yellow Gold',ref:'Vintage',price:'Price on request',desc:'A classic Patek Philippe Calatrava in yellow gold with a beautiful sunburst dial. Pure elegance distilled into a perfect dress watch.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Sunburst',Year:'c. 1975',Condition:'Good — serviced',Papers:'No'}},
+  {id:4,img:'watch07.jpg',imgs:['watch07.jpg'],brand:'Audemars Piguet',name:'Dazzle Duo',ref:'Estate',price:'Price on request',desc:'A stunning bicolor Audemars Piguet with diamond-set bezel. Where glamour meets horological excellence.',specs:{Movement:'Quartz',Case:'Bicolor steel & gold',Dial:'White diamond',Bracelet:'Integrated bicolor',Year:'c. 1985',Condition:'Excellent'}},
+  {id:5,img:'watch08.jpg',imgs:['watch08.jpg'],brand:'Audemars Piguet',name:'Diamond Pavé',ref:'Estate',price:'Price on request',desc:'Full diamond pavé Audemars Piguet in 18k yellow gold. An extraordinary example of haute horlogerie meets haute joaillerie.',specs:{Movement:'Quartz',Case:'18k Yellow Gold, diamond-set',Dial:'Full diamond pavé',Year:'c. 1990',Condition:'Mint'}},
+  {id:6,img:'watch09.jpg',imgs:['watch09.jpg'],brand:'Vintage Luxury',name:'Yellow Gold Classic',ref:'Estate',price:'Price on request',desc:'A refined vintage dress watch from a prestigious estate collection. Understated elegance at its finest.',specs:{Year:'c. 1965',Condition:'Good',Case:'18k Yellow Gold'}},
+  {id:7,img:'watch10.jpg',imgs:['watch10.jpg'],brand:'Vintage Luxury',name:'Yellow Gold Dress',ref:'Estate',price:'Price on request',desc:'Elegant vintage dress watch with textured dial and integrated mesh bracelet. A quintessential piece from the golden age of watchmaking.',specs:{Year:'c. 1970',Condition:'Good',Case:'Yellow Gold',Bracelet:'Mesh integrated'}},
+  {id:8,img:'watch14.jpg',imgs:['watch14.jpg'],brand:'Vintage Luxury',name:'Classic Dress Watch',ref:'Estate',price:'Price on request',desc:'A pristine vintage dress watch in white gold with a clean, minimalist dial. Timeless refinement.',specs:{Case:'White Gold',Condition:'Excellent',Year:'c. 1975'}},
+  {id:9,img:'watch16.jpg',imgs:['watch16.jpg'],brand:'Vintage Luxury',name:'Boutique Piece',ref:'Limited',price:'Price on request',desc:'A rare boutique edition from our carefully curated collection. Available for the discerning collector.',specs:{Condition:'Very Good',Year:'Vintage'}},
+  {id:10,img:'watch17.jpg',imgs:['watch17.jpg'],brand:'Vacheron Constantin',name:'Mesh Bracelet',ref:'Vintage',price:'Price on request',desc:'A distinguished Vacheron Constantin with an elegant integrated mesh bracelet. One of the great names in fine watchmaking.',specs:{Brand:'Vacheron Constantin',Case:'Yellow Gold',Bracelet:'Mesh integrated',Condition:'Excellent',Year:'c. 1970s'}},
+  {id:11,img:'watch18.jpg',imgs:['watch18.jpg'],brand:'Estate Collection',name:'Holiday Special',ref:'2025',price:'Price on request',desc:'A pristine piece from our 2025 estate collection. In immaculate condition and ready for a new chapter.',specs:{Condition:'Mint',Year:'2025 Acquisition'}},
+];
+
+// Get watch id from URL
+const params = new URLSearchParams(window.location.search);
+const id = parseInt(params.get('id')) || 0;
+const watch = watches.find(w=>w.id===id) || watches[0];
+
+// Populate page
+document.title = `${watch.brand} ${watch.name} — Sign Of Times`;
+document.getElementById('bcName').textContent = watch.name;
+document.getElementById('detailBrand').textContent = watch.brand;
+document.getElementById('detailName').textContent = watch.name;
+document.getElementById('detailRef').textContent = watch.ref;
+document.getElementById('detailPrice').textContent = watch.price;
+document.getElementById('detailDesc').textContent = watch.desc;
+document.getElementById('modalWatchName').textContent = watch.name;
+document.getElementById('modalWatchRef').value = watch.ref;
+
+// Specs
+const specs = watch.specs || {};
+document.getElementById('specTable').innerHTML = Object.entries(specs).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+
+// Gallery
+const mainImg = document.getElementById('mainImg');
+mainImg.src = `images/${watch.imgs[0]}`;
+mainImg.alt = watch.name;
+
+const thumbsEl = document.getElementById('thumbs');
+watch.imgs.forEach((img, i) => {
+  const div = document.createElement('div');
+  div.className = 'thumb' + (i===0?' active':'');
+  div.innerHTML = `<img src="images/${img}" alt="">`;
+  div.addEventListener('click', ()=>{
+    mainImg.src = `images/${img}`;
+    document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+    div.classList.add('active');
+  });
+  thumbsEl.appendChild(div);
+});
+
+// Condition bar
+const cond = watch.specs?.Condition || '';
+const levels = {'Mint':5,'Excellent':4,'Very Good':3,'Good':2,'Fair':1};
+const level = levels[cond.split(' ')[0]] || 3;
+document.getElementById('conditionBar').innerHTML =
+  [1,2,3,4,5].map(i=>`<div class="condition-dot ${i<=level?'filled':''}"></div>`).join('')+
+  `<span class="condition-label">${cond || 'Contact for details'}</span>`;
+
+// Related
+const related = watches.filter(w=>w.id!==id).slice(0,4);
+document.getElementById('relatedGrid').innerHTML = related.map(w=>`
+  <div class="related-card" onclick="window.location='watch.html?id=${w.id}'">
+    <img src="images/${w.img}" alt="${w.name}">
+    <p>${w.brand}</p>
+    <h4>${w.name}</h4>
+  </div>
+`).join('');
+
+// Modal
+function openModal(){document.getElementById('modalOverlay').classList.add('open');}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
+document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+function submitEnquiry(e){
+  e.preventDefault();
+  document.getElementById('modalStatus').textContent='Thank you. We will be in touch shortly.';
+  e.target.reset();
+  setTimeout(()=>{closeModal();document.getElementById('modalStatus').textContent='';},3000);
+}
+</script>
+<footer style="flex-direction:column;align-items:center;gap:16px;">
+  <div class="footer-logo" style="text-align:center;">
+    <img src="images/logo.png" alt="Sign Of Times">
+    <p style="color:rgba(249,245,240,0.35);font-size:10px;letter-spacing:.15em;margin-top:10px;">© 2026 Sign Of The Times. All rights reserved.</p>
+  </div>
+  <div style="display:flex;gap:20px;align-items:center;">
+    <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#F6961B"/></svg>
+    </a>
+    <a href="https://www.facebook.com/signofthetimeswatch" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><path d="M13 21V13h2.5l.5-3H13V8.5c0-.83.42-1.5 1.5-1.5H16V4.5S15 4 13.5 4C11.5 4 10 5.5 10 8v2H7.5v3H10v8" stroke="#F6961B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</footer>
+</body>
+</html>

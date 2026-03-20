@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Sign Of Times — Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--black:#0a0a0a;--darker:#161616;--peach:#F6961B;--peach-light:#D4A96A;}
+body{background:#161616;color:#F9F5F0;font-family:'Montserrat',sans-serif;font-weight:300;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(10,10,10,0.97);border-bottom:1px solid rgba(246,150,27,0.1);}
+.nav-logo img{height:90px;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
+.nav-center ul{display:flex;list-style:none;gap:40px;}
+.nav-center a{text-decoration:none;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(249,245,240,0.7);transition:color .2s;}
+.nav-center a:hover{color:#F6961B;}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-search{background:none;border:none;cursor:pointer;padding:4px;transition:opacity .2s,transform .2s;opacity:.85;}
+.nav-search:hover{opacity:1;transform:scale(1.1);}
+
+/* HERO BRAND */
+.brand-hero{padding:160px 60px 60px;background:#0a0a0a;text-align:center;border-bottom:1px solid rgba(246,150,27,.1);}
+.brand-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,80px);font-weight:300;color:#F9F5F0;letter-spacing:.05em;margin-bottom:12px;}
+.brand-hero p{color:rgba(249,245,240,0.5);font-size:12px;letter-spacing:.2em;text-transform:uppercase;}
+.brand-hero .count{color:#F6961B;font-size:11px;margin-top:8px;letter-spacing:.1em;}
+
+/* BACK LINK */
+.back-bar{padding:20px 60px;background:#161616;}
+.back-link{color:#888;font-size:11px;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.back-link:hover{color:#F6961B;}
+
+/* GRID */
+.grid-section{padding:40px 60px 80px;}
+.watch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1600px;margin:0 auto;}
+.watch-card{cursor:pointer;transition:opacity .25s;}
+.watch-card:hover{opacity:.85;}
+.watch-img-wrap{width:100%;aspect-ratio:3/4;overflow:hidden;background:#1a1a1a;}
+.watch-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.watch-card:hover .watch-img-wrap img{transform:scale(1.04);}
+.watch-info{padding:16px 4px 22px;}
+.watch-brand{font-size:9px;letter-spacing:.2em;color:#F6961B;text-transform:uppercase;margin-bottom:4px;}
+.watch-year{font-size:9px;letter-spacing:.1em;color:rgba(246,150,27,0.5);margin-bottom:6px;font-style:italic;}
+.watch-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:6px;line-height:1.3;color:#FFFFFF;}
+.watch-desc{font-size:11px;color:rgba(249,245,240,0.55);line-height:1.7;margin-bottom:10px;}
+.watch-price{display:inline-block;font-size:12px;color:#F6961B;margin-bottom:12px;letter-spacing:.08em;border:1px solid #F6961B;padding:5px 14px;transition:all .2s;cursor:default;}
+.watch-price:hover{background:rgba(246,150,27,.08);}
+
+/* EMPTY */
+.empty{text-align:center;padding:80px 20px;color:#555;}
+.empty h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;margin-bottom:12px;color:#888;}
+.empty a{color:#F6961B;text-decoration:none;font-size:12px;letter-spacing:.1em;text-transform:uppercase;}
+
+/* FOOTER */
+footer{background:#0a0a0a;border-top:1px solid #1f1f1f;padding:40px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-links{display:flex;gap:28px;}
+.footer-links a{color:#555;font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:#F6961B;}
+.footer-copy{color:#333;font-size:11px;letter-spacing:.05em;}
+
+@media(max-width:900px){
+  nav{padding:12px 20px;}
+  .nav-logo img{height:72px;}
+  .nav-center{display:none;}
+  .brand-hero{padding:120px 20px 40px;}
+  .back-bar{padding:16px 20px;}
+  .grid-section{padding:24px 16px 60px;}
+  .watch-grid{grid-template-columns:repeat(2,1fr);}
+  footer{padding:32px 20px;flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:480px){
+  .watch-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><a href="index.html"><img src="images/logo.png" alt="Sign Of Times"></a></div>
+  <div class="nav-center">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;align-items:center;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#F6961B"/></svg>
+    </a>
+    <button class="nav-search" aria-label="Search">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="11" cy="11" r="8" stroke="#F6961B" stroke-width="1.5" fill="none"/><line x1="17" y1="17" x2="24" y2="24" stroke="#F6961B" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="brand-hero">
+  <p style="color:#F6961B;font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:12px;">Brand Collection</p>
+  <h1 id="brandName">—</h1>
+  <p id="brandCount" class="count"></p>
+</div>
+
+<div class="back-bar">
+  <a href="collection.html" class="back-link">← All Watches</a>
+</div>
+
+<div class="grid-section">
+  <div class="watch-grid" id="watchGrid"></div>
+  <div class="empty" id="emptyMsg" style="display:none;">
+    <h2>No pieces available</h2>
+    <p style="color:#555;font-size:13px;margin:8px 0 20px;">No watches from this brand in our current collection.</p>
+    <a href="collection.html">View All Watches →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="collection.html">Collection</a>
+    <a href="gone-too-soon.html">Gone Too Soon</a>
+    <a href="upgrade-trade.html">Trade / Upgrade</a>
+    <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 Sign Of Times. All rights reserved.</div>
+</footer>
+
+<script>
+const brand = decodeURIComponent(new URLSearchParams(location.search).get('brand')||'');
+document.getElementById('brandName').textContent = brand || 'All Brands';
+document.title = `Sign Of Times — ${brand}`;
+
+fetch('/api/watches')
+  .then(r=>r.json())
+  .then(watches=>{
+    const filtered = watches.filter(w => !w.sold && w.brand.toLowerCase() === brand.toLowerCase());
+    document.getElementById('brandCount').textContent = filtered.length
+      ? `${filtered.length} piece${filtered.length>1?'s':''} available`
+      : 'No pieces currently available';
+
+    const grid = document.getElementById('watchGrid');
+    if(!filtered.length){
+      document.getElementById('emptyMsg').style.display='block';
+      return;
+    }
+    grid.innerHTML = filtered.map((w,i)=>`
+      <div class="watch-card" onclick="location.href='watch.html?id=${w.id}'">
+        <div class="watch-img-wrap">
+          <img src="images/${w.img}" alt="${w.name}" loading="${i<4?'eager':'lazy'}">
+        </div>
+        <div class="watch-info">
+          <p class="watch-brand">${w.brand}</p>
+          ${w.year ? `<p class="watch-year">${w.year}</p>` : ''}
+          <h3 class="watch-name">${w.name}</h3>
+          <p class="watch-desc">${w.desc}</p>
+          <p class="watch-price">${w.price}</p>
+        </div>
+      </div>`).join('');
+  });
+</script>
+</body>
+</html>

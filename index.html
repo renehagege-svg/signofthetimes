@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- v1773853379 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Of Times — Luxury & Vintage Watches</title>
+<meta name="description" content="Sign Of Times — Luxury & Vintage Watch Dealer. Patek Philippe, Audemars Piguet, Rolex, Vacheron Constantin. Curated timepieces for the discerning collector.">
+<meta name="keywords" content="vintage watches, luxury watches, Patek Philippe, Audemars Piguet, Rolex, Vacheron Constantin, Cartier, vintage timepieces, watch dealer, collectible watches">
+<meta name="author" content="Sign Of Times">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.signofthetimes.watch/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sign Of Times — Luxury & Vintage Watches">
+<meta property="og:description" content="Carefully curated luxury and vintage timepieces. Take a ride in our Times Machine.">
+<meta property="og:image" content="https://www.signofthetimes.watch/images/hero.jpg">
+<meta property="og:url" content="https://www.signofthetimes.watch/">
+<meta property="og:site_name" content="Sign Of Times">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sign Of Times — Luxury & Vintage Watches">
+<meta name="twitter:description" content="Curated luxury and vintage timepieces. Patek Philippe, AP, Rolex and more.">
+<meta name="twitter:image" content="https://www.signofthetimes.watch/images/hero.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"Sign Of Times",
+  "description":"Luxury and vintage watch dealer specializing in Patek Philippe, Audemars Piguet, Rolex and fine timepieces.",
+  "url":"https://www.signofthetimes.watch",
+  "email":"steeve@signofthetimes.watch",
+  "image":"https://www.signofthetimes.watch/images/logo.png",
+  "priceRange":"$$$",
+  "telephone":"+351926650503",
+  "currenciesAccepted":"USD",
+  "paymentAccepted":"Cash, Bank Transfer",
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog",
+    "name":"Luxury & Vintage Watch Collection"
+  }
+}
+</script>
+
+<meta name="description" content="Carefully curated luxury and vintage timepieces. Patek Philippe, Audemars Piguet, Rolex and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:#0a0a0a; --dark:#111; --darker:#161616;
+    --peach:#B8874A; --peach-light:#D4A96A; --peach-dark:#9A6E35;
+    --white:#F9F5F0; --gray:#888880;
+    --card-bg:#2A2A2A; --card-bg2:#222;
+    --border:rgba(0,0,0,0.1);
+    --text:#1a1a1a; --text-muted:#55554E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:#161616;color:#F9F5F0;font-family:'Montserrat',sans-serif;font-weight:300;}
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;width:100%;z-index:100;
+    padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(10,10,10,0.97);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(246,150,27,0.3);
+  }
+  .nav-logo img{height:104px;width:auto;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
+  .nav-center{display:flex;gap:36px;list-style:none;}
+  .nav-center a{color:#F6961B;text-decoration:none;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s,color .2s;white-space:nowrap;}
+  .nav-center a:hover{opacity:1;color:#fff;}
+  .nav-right{display:flex;align-items:center;gap:20px;}
+  .nav-search{background:none;border:none;cursor:pointer;padding:4px;transition:opacity .2s,transform .2s;opacity:.85;}
+  .nav-search:hover{opacity:1;transform:scale(1.1);}
+  .nav-lang{position:relative;}
+  .lang-custom{position:relative;cursor:pointer;user-select:none;}
+  .lang-trigger{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid #F6961B;color:#F6961B;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.12em;font-weight:500;background:#000;}
+  .lang-trigger svg{flex-shrink:0;transition:transform .2s;}
+  .lang-custom.open .lang-trigger svg{transform:rotate(180deg);}
+  .lang-dropdown{display:none;position:absolute;top:100%;right:0;background:#000;border:1px solid #F6961B;border-top:none;min-width:100%;z-index:999;}
+  .lang-custom.open .lang-dropdown{display:block;}
+  .lang-option{padding:8px 14px;color:#F6961B;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.12em;font-weight:400;transition:background .15s;}
+  .lang-option:hover{background:#F6961B;color:#000;}
+  .lang-option.active{color:#fff;font-weight:500;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .close-menu{display:none;}
+  .hamburger span{width:24px;height:1px;background:#F6961B;display:block;}
+
+  /* ── HERO ── */
+  .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.85) 0%,rgba(10,10,10,.25) 60%,transparent 100%);}
+  .hero-content{position:relative;z-index:2;padding:0 60px 80px;max-width:700px;}
+  .hero-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);margin-bottom:18px;}
+  .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,88px);font-weight:300;line-height:1.05;margin-bottom:24px;}
+  .hero-title em{font-style:italic;color:var(--peach-light);}
+  .hero-sub{font-size:13px;line-height:1.9;color:rgba(249,245,240,.7);margin-bottom:36px;max-width:440px;}
+  .btn-outline{display:inline-block;padding:13px 36px;border:1px solid var(--peach);color:var(--peach);text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;transition:background .3s,color .3s;}
+  .btn-outline:hover{background:var(--peach);color:var(--black);}
+  .btn-solid{display:inline-block;padding:13px 36px;background:#F6961B;color:#0a0a0a;text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;border:1px solid #F6961B;transition:background .3s;}
+  .btn-solid:hover{background:#e0850a;border-color:#e0850a;}
+
+
+
+  /* ── WHO WE ARE ── */
+  .about{padding:48px 60px;background:var(--darker);border:1px solid var(--border);}
+  .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center;}
+  .section-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#F6961B;margin-bottom:16px;}
+  
+  
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);font-weight:300;line-height:1.2;margin-bottom:28px;color:#F9F5F0;}
+  .section-title em{font-style:italic;color:var(--peach-light);}
+  .about-body{font-size:16px;line-height:2;color:rgba(249,245,240,0.75);text-align:center;position:relative;padding:40px 40px 80px;}
+  .quote-open{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(246,150,27,.3);line-height:0;vertical-align:-40px;margin-right:6px;display:inline;}
+  .quote-close{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(246,150,27,.3);line-height:0;vertical-align:-40px;margin-left:6px;display:inline;}
+  .about-body::before{content:'';position:absolute;inset:0;z-index:0;border-radius:2px;background:
+    linear-gradient(to right, #161616 0%, rgba(22,22,22,0.75) 40%, rgba(22,22,22,0.35) 75%, rgba(22,22,22,0.6) 100%),
+    url('images/about_bg.jpg') center/cover no-repeat;opacity:0.6;}
+  .about-body>*{position:relative;z-index:1;}
+  .about-body p+p{margin-top:16px;}
+  .about-body em{font-style:italic;color:var(--peach-light);}
+  .about-img{position:relative;}
+  .about-img img{width:100%;aspect-ratio:3/4;object-fit:cover;}
+  .about-img::before{content:'';position:absolute;top:-14px;left:-14px;width:100%;height:100%;border:1px solid var(--border);z-index:-1;}
+
+  /* ── TIMEPIECES ── */
+  .timepieces{padding:48px 60px 40px;background:#161616;}
+  .timepieces-header{max-width:1200px;margin:0 auto 56px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .timepieces-header .section-title{margin-bottom:0;}
+  .tp-sub{font-size:12px;color:#777;letter-spacing:.08em;max-width:280px;text-align:right;line-height:1.7;}
+  .watches-grid{max-width:1600px;margin:0 auto 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  
+  .watch-card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s ease;display:block;}
+  .watch-card:hover img{transform:scale(1.05);}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .timepieces-cta{max-width:1200px;margin:0 auto;text-align:center;}
+
+  /* ── 3 PROMO CARDS ── */
+  .promo{padding:48px 60px;background:#161616;overflow:hidden;}
+  .promo-grid{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+  .promo-card{position:relative;overflow:hidden;aspect-ratio:4/5;outline:1.5px solid #F6961B;outline-offset:-1px;}
+  .promo-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.55);}
+  .promo-card:hover img{transform:scale(1.05);filter:brightness(.45);}
+  .promo-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:24px 28px 32px;}
+  .promo-tag{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--peach);margin-bottom:10px;}
+  .promo-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.2;margin-bottom:8px;min-height:62px;display:flex;align-items:flex-end;justify-content:center;}
+  .promo-desc{font-size:11px;color:rgba(249,245,240,.65);line-height:1.7;margin-bottom:20px;}
+  .promo-btn{display:inline-block;padding:10px 24px;border:1px solid rgba(232,196,160,.6);color:var(--peach);font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:background .3s,color .3s;}
+  .promo-btn:hover{background:var(--peach);color:var(--black);}
+
+  /* ── BRANDS ── */
+  .brands{padding:60px;background:#161616;border-top:1px solid rgba(232,196,160,0.2);border-bottom:1px solid rgba(232,196,160,0.2);}
+  .brands-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+  .brand-item{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:#888880;letter-spacing:.1em;transition:color .3s;text-decoration:none;display:inline-block;}
+  .brand-item:hover{color:#F6961B;}
+  .brand-item--stack{text-align:center;line-height:1.1;}
+  .brand-item--stack span{display:block;text-align:center;}
+  .brand-sep{width:1px;height:30px;background:rgba(232,196,160,0.2);}
+
+  /* ── FOOTER ── */
+  footer{padding:48px 60px;background:var(--darker);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-logo img{height:53px;width:auto;opacity:.85;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);display:block;margin:0 auto;}
+  .footer-copy{font-size:11px;color:var(--gray);letter-spacing:.06em;}
+  .footer-links{display:flex;gap:24px;}
+  .footer-links a{font-size:11px;color:var(--gray);text-decoration:none;letter-spacing:.1em;transition:color .2s;}
+  .footer-links a:hover{color:var(--peach);}
+
+  /* ── SEARCH OVERLAY ── */
+  .search-overlay{position:fixed;inset:0;background:rgba(10,10,10,.97);z-index:200;display:none;align-items:center;justify-content:center;}
+  .search-overlay.open{display:flex;}
+  .search-box{width:100%;max-width:600px;padding:0 24px;}
+  .search-box input{width:100%;background:none;border:none;border-bottom:1px solid var(--peach);color:var(--white);font-family:'Cormorant Garamond',serif;font-size:32px;padding:16px 0;outline:none;}
+  .search-close{position:absolute;top:32px;right:48px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer;opacity:.7;}
+  .search-result{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(246,150,27,0.15);cursor:pointer;text-decoration:none;color:var(--white);}
+  .search-result:hover{color:#F6961B;}
+  .search-result img{width:56px;height:56px;object-fit:cover;}
+  .search-result-info{display:flex;flex-direction:column;}
+  .search-result-brand{font-size:10px;letter-spacing:.2em;color:#F6961B;text-transform:uppercase;}
+  .search-result-name{font-family:'Cormorant Garamond',serif;font-size:20px;}
+  .search-result-price{font-size:11px;color:#888;}
+  .search-no-result{color:#888;font-size:14px;padding:16px 0;}
+
+  /* ── MOBILE ── */
+  /* ── TABLET (≤900px) ── */
+  @media(max-width:900px){
+    nav{padding:12px 20px;}
+    .nav-logo img{height:104px;}
+    .nav-center{display:none;}
+    .hamburger{display:flex;}
+    .lang-trigger{padding:5px 10px;font-size:11px;}
+    .lang-dropdown{right:0;}
+    /* Mobile menu overlay */
+    .nav-center{
+      position:fixed;top:0;left:0;right:0;bottom:0;
+      width:100%;height:100dvh;
+      background:#0a0a0a;z-index:500;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;gap:0;
+      transform:translateX(100%);
+      transition:transform .35s cubic-bezier(.77,0,.18,1);
+      list-style:none;
+    }
+    .nav-center.open{transform:translateX(0);}
+    .nav-center li{width:100%;text-align:center;border-bottom:1px solid rgba(246,150,27,.12);}
+    .nav-center li:first-child{border-top:1px solid rgba(246,150,27,.12);}
+    .nav-center a{
+      display:block;padding:22px 40px;
+      font-size:13px;letter-spacing:.25em;text-transform:uppercase;
+      color:#F9F5F0;font-weight:400;
+      transition:color .2s,background .2s;
+    }
+    .nav-center a:hover{color:#F6961B;background:rgba(246,150,27,.05);}
+
+    /* Hamburger → X animation */
+    .hamburger span{transition:transform .3s, opacity .3s;}
+    .hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+    .hamburger.active span:nth-child(2){opacity:0;}
+    .hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+    .close-menu{display:none;}
+    
+    .hero{height:92vh;}
+    .hero-content{padding:0 20px 48px;}
+    .hero-sub{font-size:13px;}
+    .about{padding:36px 20px;}
+    .about-inner{grid-template-columns:1fr;gap:24px;}
+
+
+
+
+    .timepieces{padding:48px 20px;}
+    .timepieces-header{flex-direction:column;align-items:flex-start;gap:10px;}
+    .tp-sub{text-align:left;max-width:100%;font-size:12px;}
+    .watches-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+    
+    
+    
+    
+    .promo{padding:48px 20px;}
+    .promo-grid{grid-template-columns:1fr;gap:12px;}
+    .promo-card{aspect-ratio:16/9;}
+    .promo-content{padding:24px 20px;}
+    .promo-title{font-size:22px;}
+    .brands{padding:32px 20px;}
+    .brands-inner{flex-wrap:wrap;justify-content:center;gap:20px;}
+    .brand-sep{display:none;}
+    .brand-item{font-size:20px;}
+    footer{padding:24px 20px;flex-direction:column;text-align:center;gap:12px;}
+    #contact{padding:60px 20px;}
+    #contact>div{padding:0;}
+  }
+  /* ── MOBILE (≤600px) ── */
+  @media(max-width:600px){
+    nav{padding:8px 16px;}
+    .about{padding:48px 20px;}
+    .about-inner{flex-direction:column;gap:24px;}
+    .about-left{min-width:unset;}
+    .about-title{font-size:clamp(26px,7vw,36px);}
+    .brands-inner{flex-wrap:wrap;gap:12px;padding:20px;}
+    .brand-item{font-size:10px;letter-spacing:.15em;}
+    .brand-sep{display:none;}
+    section[id="contact"]{padding:40px 20px !important;}
+    .promo-grid{grid-template-columns:1fr;}
+    .footer-logo img{height:44px;}
+    .hero-title{font-size:clamp(32px,9vw,48px);}
+    .watches-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+    .watch-card-info{padding:8px 10px;}
+    .watch-card-name{font-size:11px;}
+    .watch-card-price{font-size:10px;}
+    .nav-logo img{height:52px;}
+    .nav-right{gap:12px;}
+    .lang-trigger{padding:5px 8px;font-size:10px;letter-spacing:.08em;}
+    
+    .hero{height:88vh;}
+    .hero-content{padding:0 16px 40px;}
+    .hero-title{font-size:clamp(34px,10vw,52px);}
+    .hero-sub{font-size:12px;margin-bottom:28px;}
+    .btn-outline{padding:12px 28px;font-size:10px;}
+    .section-title{font-size:clamp(24px,7vw,36px);}
+    .about{padding:28px 16px;}
+    .about-body{font-size:13px;}
+    .timepieces{padding:48px 16px;}
+    
+    .watch-card img{aspect-ratio:16/10;}
+    
+    
+    
+    .promo{padding:36px 16px;}
+    .promo-card{aspect-ratio:4/3;}
+    .promo-title{font-size:20px;}
+    .promo-btn{padding:10px 20px;font-size:10px;}
+    .brands-inner{gap:14px;}
+    .brand-item{font-size:18px;}
+    footer{padding:20px 16px;font-size:11px;}
+    #contact{padding:48px 16px;}
+    #contact>div>form input,
+    #contact>div>form select,
+    #contact>div>form textarea{font-size:16px;} /* prevent iOS zoom */
+    #contact>div>form>div{grid-template-columns:1fr!important;}
+    .marquee-item{font-size:16px;}
+  }
+
+  /* ── WATCH CARDS (identical to collection page) ── */
+  .watch-card{overflow:hidden;cursor:pointer;background:transparent;display:flex;flex-direction:column;}
+  .watch-card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .5s ease;display:block;}
+  .watch-card:hover img{transform:scale(1.04);}
+  .watch-info{padding:14px 4px 20px;display:flex;flex-direction:column;flex:1;}
+  .watch-brand{font-size:9px;letter-spacing:.2em;color:#F6961B;text-transform:uppercase;margin-bottom:4px;}
+  .watch-year{font-size:9px;letter-spacing:.1em;color:rgba(246,150,27,0.5);margin-bottom:6px;font-style:italic;}
+  .watch-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:6px;line-height:1.3;color:#FFFFFF;}
+  .watch-desc-full{font-size:11px;color:rgba(249,245,240,0.55);line-height:1.7;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(11px * 1.7 * 3);}
+  .watch-price{display:inline-block;font-size:12px;color:#F6961B;margin-top:auto;margin-bottom:12px;letter-spacing:.08em;border:1px solid #F6961B;padding:5px 14px;transition:all .2s;cursor:pointer;text-decoration:none;align-self:flex-start;}
+  .watch-price:hover{background:rgba(246,150,27,.65);color:#fff;border-color:#F6961B;transform:scale(1.03);}
+  .watch-enquire-btn{display:inline-block;padding:8px 20px;border:1px solid #F6961B;color:#0a0a0a;font-size:9px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;background:#F6961B;font-weight:500;transition:background .2s;}
+  .watch-enquire-btn:hover{background:#e0850a;border-color:#e0850a;}
+
+  #timepieces, #about, #promo, #contact, #home{scroll-margin-top:140px;}
+  
+  /* DECADES GRID */
+  .decades-section{padding:0 0 80px;}
+  .decades-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(246,150,27,0.15);}
+  .decade-card{position:relative;display:block;padding:36px;background:#1a1a1a;text-decoration:none;transition:background .3s;cursor:pointer;height:260px;box-sizing:border-box;}
+  .decade-card:hover{background:#1f1f1f;}
+  .decade-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:rgba(249,245,240,0.07);line-height:1;letter-spacing:-.02em;position:absolute;top:24px;left:28px;pointer-events:none;user-select:none;}
+  .decade-num em{font-style:italic;color:rgba(246,150,27,0.2);}
+  .decade-rule{display:block;width:32px;height:1px;background:#F6961B;margin-bottom:14px;}
+  .decade-label{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:#F6961B;margin-bottom:10px;}
+  .decade-card-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#F9F5F0;line-height:1.3;}
+  .decade-card-title em{color:var(--peach-light);font-style:italic;}
+  .decade-bottom{position:absolute;top:168px;left:36px;}
+  @media(max-width:900px){.decades-section{padding:0 0 60px;}.decades-grid{grid-template-columns:repeat(2,1fr);}.decade-card{padding:28px;height:220px;}.decade-num{font-size:52px;}}
+  @media(max-width:600px){.decades-grid{grid-template-columns:repeat(2,1fr);gap:1px;}.decade-card{height:170px;padding:20px;}.decade-num{font-size:44px;top:12px;left:16px;}.decade-bottom{top:90px;left:20px;}.decade-rule{margin-bottom:8px;}.decade-label{font-size:8px;margin-bottom:6px;}.decade-card-title{font-size:13px;}}
+  
+  /* AUDIO PLAYER */
+  .audio-btn{position:fixed;bottom:28px;right:28px;z-index:150;width:48px;height:48px;border-radius:50%;background:rgba(10,10,10,0.9);border:1px solid rgba(246,150,27,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .3s,transform .2s;backdrop-filter:blur(6px);}
+  .audio-btn:hover{border-color:#F6961B;transform:scale(1.08);}
+  .audio-btn svg{width:18px;height:18px;}
+  .audio-btn.playing .icon-play{display:none;}
+  .audio-btn.playing .icon-pause{display:block;}
+  .audio-btn .icon-pause{display:none;}
+  
+  
+  </style>
+</head>
+<body>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Brand, model or year (e.g. 1960s)..." autofocus oninput="runSearch(this.value)">
+    <div id="searchResults" style="margin-top:24px;max-height:60vh;overflow-y:auto;"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><img src="images/logo.png" alt="Sign Of Times"></a>
+  <ul class="nav-center" id="navLinks">
+    <li><a href="#timepieces">New Timepieces</a></li>
+    <li><a href="collection.html">The Collection</a></li>
+    <li><a href="#about">What We Are</a></li>
+    <li><a href="#promo">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-lang">
+      <div class="lang-custom" id="langCustom">
+        <div class="lang-trigger" onclick="toggleLangMenu()">
+          <span id="langCurrent">EN</span>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M0 0l5 6 5-6z" fill="#F6961B"/></svg>
+        </div>
+        <div class="lang-dropdown">
+          <div class="lang-option active" onclick="setLang('en')">EN</div>
+          <div class="lang-option" onclick="setLang('fr')">FR</div>
+          <div class="lang-option" onclick="setLang('ru')">RU</div>
+        </div>
+      </div>
+    </div>
+    <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;align-items:center;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85" aria-label="Instagram">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#F6961B"/></svg>
+    </a>
+    <button class="nav-search" onclick="openSearch()" aria-label="Search">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="8" stroke="#F6961B" stroke-width="1.5" fill="none"/>
+        <line x1="17" y1="17" x2="24" y2="24" stroke="#F6961B" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <button class="close-menu" id="closeMenu">✕</button>
+  </div>
+</nav>
+
+<!-- HERO BANDEAU -->
+<section class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline poster="images/hero.jpg">
+    <source src="images/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Sign Of Times</p>
+    <h1 class="hero-title" data-i18n="hero.title">SIGN<br>OF THE<br><em>TIMES</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Rare and exceptional vintage watches, carefully selected for their craftsmanship, history, and enduring beauty.</p>
+    <a href="collection.html" class="btn-outline" data-i18n="hero.cta">Discover the Collection</a>
+  </div>
+</section>
+
+</div>
+
+<!-- WHO WE ARE -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <p class="section-label" data-i18n="about.label">What We Are</p>
+      <h2 class="section-title about-title" data-i18n="about.title">A <em>Time</em> Machine<br>A <em>Funky</em> Curator</h2>
+    </div>
+    <div class="about-body" id="aboutBody">
+      <p data-i18n="about.p1"><span class="quote-open">“</span>I was always fascinated about watches, not because they could tell time — but because they could tell in what times Mankind was living.</p>
+      <p data-i18n="about.p2">Watches have always encapsulated the spirit of the time, its style, its mood, its obsessions, its passions, its musicality. Take a ride with me in our Times Machine; from the 50's birth of cool to the 70's stairway to heaven and the 80's flashy Yuppies…</p>
+      <p data-i18n="about.p3"><em style='color:#F6961B;'>Don't wait, it's TIME.</em> — S.H.<span class="quote-close">”</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMEPIECES -->
+<section class="timepieces" id="timepieces">
+  <div class="timepieces-header">
+    <div>
+      <p class="section-label" data-i18n="tp.label">New Timepieces</p>
+      <h2 class="section-title" data-i18n="tp.title">The Latest <em>Fashion</em></h2>
+    </div>
+    
+  </div>
+  <div class="watches-grid" id="watchGrid"></div>
+  <div class="timepieces-cta">
+    <a href="collection.html" class="btn-solid" data-i18n="tp.cta">Shop Now</a>
+  </div>
+</section>
+
+<!-- DECADES -->
+<section class="decades-section">
+  <div class="decades-grid">
+    <a href="decades.html?d=50s" class="decade-card">
+      <span class="decade-num">50<em>s</em></span>
+      <div class="decade-bottom">
+        <span class="decade-rule"></span>
+        <span class="decade-label">1950s</span>
+        <h3 class="decade-card-title">The Birth<br>of <em>Cool</em></h3>
+      </div>
+    </a>
+    <a href="decades.html?d=60s" class="decade-card">
+      <span class="decade-num">60<em>s</em></span>
+      <div class="decade-bottom">
+        <span class="decade-rule"></span>
+        <span class="decade-label">1960s</span>
+        <h3 class="decade-card-title">Like a<br><em>Rolling Stone</em></h3>
+      </div>
+    </a>
+    <a href="decades.html?d=70s" class="decade-card">
+      <span class="decade-num">70<em>s</em></span>
+      <div class="decade-bottom">
+        <span class="decade-rule"></span>
+        <span class="decade-label">1970s</span>
+        <h3 class="decade-card-title">We Can<br>Be <em>Heroes</em></h3>
+      </div>
+    </a>
+    <a href="decades.html?d=80s" class="decade-card">
+      <span class="decade-num">80<em>s</em></span>
+      <div class="decade-bottom">
+        <span class="decade-rule"></span>
+        <span class="decade-label">1980s</span>
+        <h3 class="decade-card-title">Le <em>Freak</em></h3>
+      </div>
+    </a>
+    <a href="decades.html?d=90s" class="decade-card">
+      <span class="decade-num">90<em>s</em></span>
+      <div class="decade-bottom">
+        <span class="decade-rule"></span>
+        <span class="decade-label">1990s</span>
+        <h3 class="decade-card-title"><em>C.R.E.A.M.</em></h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- 3 PROMO CARDS -->
+<section class="promo" id="promo">
+  <div class="promo-grid">
+
+    <div class="promo-card">
+      <img src="images/watch11.jpg" alt="Gone Too Soon">
+      <div class="promo-content">
+        <p class="promo-tag" data-i18n="promo1.tag">Archive</p>
+        <h3 class="promo-title" data-i18n="promo1.title">Gone<br>Too Soon</h3>
+        <p class="promo-desc" data-i18n="promo1.desc">A look back at exceptional pieces that have found their new home. Inspiration for what's possible.</p>
+        <a href="gone-too-soon.html" class="promo-btn" data-i18n="promo1.btn">Sold Watches</a>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <img src="images/watch06.jpg" alt="Dream Timepiece">
+      <div class="promo-content">
+        <p class="promo-tag" data-i18n="promo2.tag">Wishlist</p>
+        <h3 class="promo-title" data-i18n="promo2.title">Miss Your Dream<br>Timepiece?</h3>
+        <p class="promo-desc" data-i18n="promo2.desc">Tell us which watch you're looking for. We'll hunt it down for you across our network.</p>
+        <a href="#contact" class="promo-btn" onclick="setSubject('search')" data-i18n="promo2.btn">More Info</a>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <img src="images/watch07.jpg" alt="Upgrade or Trade">
+      <div class="promo-content">
+        <p class="promo-tag" data-i18n="promo3.tag">Trade-In</p>
+        <h3 class="promo-title" data-i18n="promo3.title">Want an Upgrade<br>or Trade?</h3>
+        <p class="promo-desc" data-i18n="promo3.desc">We buy, sell and trade exceptional timepieces. Get a fair valuation for your watch today.</p>
+        <a href="upgrade-trade.html" class="promo-btn" data-i18n="promo3.btn">Sell / Trade</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands">
+  <div class="brands-inner">
+    <a href="brand.html?brand=Rolex" class="brand-item">Rolex</a>
+    <span class="brand-sep"></span>
+    <a href="brand.html?brand=Audemars+Piguet" class="brand-item brand-item--stack">Audemars<br><span>Piguet</span></a>
+    <span class="brand-sep"></span>
+    <a href="brand.html?brand=Patek+Philippe" class="brand-item brand-item--stack">Patek<br><span>Philippe</span></a>
+    <span class="brand-sep"></span>
+    <a href="brand.html?brand=Vacheron+Constantin" class="brand-item brand-item--stack">Vacheron<br><span>Constantin</span></a>
+    <span class="brand-sep"></span>
+    <a href="brand.html?brand=Cartier" class="brand-item">Cartier</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section style="padding:48px 60px;background:#161616;text-align:center;" id="contact">
+  <div style="max-width:560px;margin:0 auto;">
+    
+    <h2 class="section-title" style="margin-bottom:16px;color:#F9F5F0;" data-i18n="contact.title">Enquire about a <em>piece</em></h2>
+    <p style="font-size:13px;line-height:1.8;color:rgba(249,245,240,0.6);margin-bottom:40px;" data-i18n="contact.sub">Whether buying, selling, or trading — we're here to help.</p>
+    <form style="display:flex;flex-direction:column;gap:14px;text-align:left;" onsubmit="submitForm(event)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <input id="fname" style="width:100%;padding:13px 16px;background:#161616;border:1px solid rgba(232,196,160,0.2);color:#F9F5F0;font-family:'Montserrat',sans-serif;font-size:12px;outline:none;" type="text" placeholder="Your Name" required data-i18n-placeholder="form.name">
+        <input style="width:100%;padding:13px 16px;background:#161616;border:1px solid rgba(232,196,160,0.2);color:#F9F5F0;font-family:'Montserrat',sans-serif;font-size:12px;outline:none;" type="email" placeholder="Email Address" required data-i18n-placeholder="form.email">
+      </div>
+      <input id="fsubject" style="width:100%;padding:13px 16px;background:#161616;border:1px solid rgba(232,196,160,0.2);color:#F9F5F0;font-family:'Montserrat',sans-serif;font-size:12px;outline:none;" type="text" placeholder="Subject" data-i18n-placeholder="form.subject">
+      <textarea style="width:100%;padding:13px 16px;background:#161616;border:1px solid rgba(232,196,160,0.2);color:#F9F5F0;font-family:'Montserrat',sans-serif;font-size:12px;outline:none;min-height:120px;resize:vertical;" placeholder="Your message..." required data-i18n-placeholder="form.message"></textarea>
+      <button type="submit" style="padding:15px;background:var(--peach);color:var(--black);border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;" data-i18n="form.submit">Send Message</button>
+    </form>
+    <p id="formStatus" style="margin-top:20px;font-size:12px;color:var(--peach);"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="flex-direction:column;align-items:center;gap:16px;">
+  <div class="footer-logo" style="text-align:center;">
+    <img src="images/logo.png" alt="Sign Of Times">
+    <p style="color:rgba(249,245,240,0.35);font-size:10px;letter-spacing:.15em;margin-top:10px;">© 2026 Sign Of The Times. All rights reserved.</p>
+  </div>
+  <div style="display:flex;gap:20px;align-items:center;">
+    <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#F6961B"/></svg>
+    </a>
+    <a href="https://www.facebook.com/signofthetimeswatch" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><path d="M13 21V13h2.5l.5-3H13V8.5c0-.83.42-1.5 1.5-1.5H16V4.5S15 4 13.5 4C11.5 4 10 5.5 10 8v2H7.5v3H10v8" stroke="#F6961B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+// ── i18n ─────────────────────────────────────────────────
+const i18n = {
+  en:{
+    "nav.collection":"Timepieces","nav.about":"Who We Are","nav.services":"Services","nav.contact":"Contact",
+    "hero.eyebrow":"Sign Of Times",
+    "hero.title":"SIGN<br>OF THE<br><em>TIMES</em>",
+    "hero.sub":"Rare and exceptional vintage watches, carefully selected for their craftsmanship, history, and enduring beauty.",
+    "hero.cta":"Discover the Collection",
+    "about.label":"What We Are",
+    "about.title":"A <em>Time</em> Machine<br>A <em>Funky</em> Curator",
+    "about.p1":"I was always fascinated about watches, not because they could tell time — but because they could tell in what times Mankind was living.",
+    "about.p2":"Watches have always encapsulated the spirit of the time, its style, its mood, its obsessions, its passions, its musicality. Take a ride with me in our Times Machine; from the 50's birth of cool to the 70's stairway to heaven and the 80's flashy Yuppies…",
+    "about.p3":"<em style='color:#F6961B;'>Don't wait, it's TIME.</em> — S.H.",
+    "tp.label":"New Timepieces","tp.title":"The Latest <em>Fashion</em>",
+    "tp.sub":"Each piece is unique. Contact us to enquire about availability and pricing.",
+    "tp.cta":"Shop Now",
+    "promo1.tag":"Archive","promo1.title":"Gone<br>Too Soon","promo1.desc":"A look back at exceptional pieces that have found their new home. Inspiration for what's possible.","promo1.btn":"Sold Watches",
+    "promo2.tag":"Wishlist","promo2.title":"Miss Your Dream<br>Timepiece?","promo2.desc":"Tell us which watch you're looking for. We'll hunt it down for you across our network.","promo2.btn":"More Info",
+    "promo3.tag":"Trade-In","promo3.title":"Want an Upgrade<br>or Trade?","promo3.desc":"We buy, sell and trade exceptional timepieces. Get a fair valuation for your watch today.","promo3.btn":"Sell / Trade",
+    "contact.label":"Get In Touch","contact.title":"Enquire about a <em>piece</em>","contact.sub":"Whether buying, selling, or trading — we're here to help.",
+    "form.name":"Your Name","form.email":"Email Address","form.subject":"Subject","form.message":"Your message...","form.submit":"Send Message",
+    "footer.copy":"© 2026 Sign Of Times. All rights reserved.",
+    "watch.enquire":"Enquire"
+  },
+  fr:{
+    "nav.collection":"Montres","nav.about":"Qui Sommes-Nous","nav.services":"Services","nav.contact":"Contact",
+    "hero.eyebrow":"Sign Of Times",
+    "hero.title":"Le temps est<br><em>le luxe le plus précieux.</em>",
+    "hero.sub":"Montres rares et exceptionnelles, soigneusement sélectionnées pour leur savoir-faire, leur histoire et leur beauté intemporelle.",
+    "hero.cta":"Découvrir la Collection",
+    "about.label":"What We Are",
+    "about.title":"Une <em>Machine à Remonter<br>le Temps</em>",
+    "about.p1":"J'ai toujours été fasciné par les montres, non pas parce qu'elles donnaient l'heure — mais parce qu'elles racontaient en quelle époque l'Humanité vivait.",
+    "about.p2":"Les montres ont toujours encapsulé l'esprit du temps, son style, son humeur, ses obsessions, ses passions, sa musicalité. Embarquez avec moi dans notre Machine à Remonter le Temps ; des années 50 et la naissance du cool, aux années 70 et leur stairway to heaven, jusqu'aux flamboyants Yuppies des 80's…",
+    "about.p3":"<em>N'attendez pas, c'est l'heure.</em> — S.H.",
+    "tp.label":"New Timepieces","tp.title":"<em>Montres</em>",
+    "tp.sub":"Chaque pièce est unique. Contactez-nous pour connaître disponibilité et prix.",
+    "tp.cta":"Voir la Collection",
+    "promo1.tag":"Archive","promo1.title":"Parties<br>Trop Tôt","promo1.desc":"Un regard sur les pièces exceptionnelles qui ont trouvé leur nouveau foyer. Inspiration pour le possible.","promo1.btn":"Montres Vendues",
+    "promo2.tag":"Liste de Souhaits","promo2.title":"Votre Montre<br>de Rêve?","promo2.desc":"Dites-nous quelle montre vous recherchez. Nous la trouverons pour vous dans notre réseau.","promo2.btn":"Plus d'infos",
+    "promo3.tag":"Reprise","promo3.title":"Envie d'une Mise<br>à Niveau?","promo3.desc":"Nous achetons, vendons et échangeons des pièces d'exception. Obtenez une estimation pour votre montre.","promo3.btn":"Vendre / Échanger",
+    "contact.label":"Nous Contacter","contact.title":"Renseignez-vous sur une <em>pièce</em>","contact.sub":"Achat, vente ou échange — nous sommes là pour vous.",
+    "form.name":"Votre Nom","form.email":"Email","form.subject":"Sujet","form.message":"Votre message...","form.submit":"Envoyer",
+    "footer.copy":"© 2026 Sign Of Times. Tous droits réservés.",
+    "watch.enquire":"Renseignement"
+  },
+  ru:{
+    "nav.collection":"Часы","nav.about":"О нас","nav.services":"Услуги","nav.contact":"Контакт",
+    "hero.eyebrow":"Sign Of Times",
+    "hero.title":"Время —<br><em>самая ценная роскошь.</em>",
+    "hero.sub":"Редкие и исключительные винтажные часы, тщательно отобранные за мастерство, историю и вечную красоту.",
+    "hero.cta":"Изучить Коллекцию",
+    "about.label":"О нас",
+    "about.title":"A <em>Time</em> Machine<br>A <em>Funky</em> Curator",
+    "about.p1":"Я всегда был очарован часами, не потому что они показывают время — а потому что они рассказывают, в какое время жило Человечество.",
+    "about.p2":"Часы всегда воплощали дух эпохи, её стиль, настроение, увлечения, страсти, музыкальность. Отправьтесь со мной в нашей Машине Времени; от рождения кул 50-х, до Stairway to Heaven 70-х и блестящих яппи 80-х…",
+    "about.p3":"<em>Не ждите — настало ВРЕМЯ.</em> — S.H.",
+    "tp.label":"New Timepieces","tp.title":"The Latest <em>Fashion</em>",
+    "tp.sub":"Каждый экземпляр уникален. Свяжитесь с нами для уточнения наличия и цены.",
+    "tp.cta":"Перейти в Коллекцию",
+    "promo1.tag":"Архив","promo1.title":"Ушли<br>Слишком Рано","promo1.desc":"Взгляд на исключительные экземпляры, нашедшие новых хозяев. Вдохновение для будущего.","promo1.btn":"Проданные Часы",
+    "promo2.tag":"Список Желаний","promo2.title":"Ищете часы<br>своей мечты?","promo2.desc":"Расскажите, какие часы вы ищете. Мы найдём их для вас.","promo2.btn":"Подробнее",
+    "promo3.tag":"Обмен","promo3.title":"Хотите обновить<br>или обменять?","promo3.desc":"Мы покупаем, продаём и обмениваем исключительные часы. Получите справедливую оценку.","promo3.btn":"Продать / Обменять",
+    "contact.label":"Свяжитесь С Нами","contact.title":"Запрос о <em>часах</em>","contact.sub":"Покупка, продажа или обмен — мы готовы помочь.",
+    "form.name":"Ваше Имя","form.email":"Email","form.subject":"Тема","form.message":"Ваше сообщение...","form.submit":"Отправить",
+    "footer.copy":"© 2026 Sign Of Times. Все права защищены.",
+    "watch.enquire":"Запросить"
+  }
+};
+
+let currentLang = 'en';
+function toggleLangMenu(){document.getElementById('langCustom').classList.toggle('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('#langCustom'))document.getElementById('langCustom').classList.remove('open');});
+function setLang(l){
+  currentLang=l;
+  const cur=document.getElementById('langCurrent');
+  if(cur)cur.textContent=l.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(o=>o.classList.toggle('active',o.textContent===l.toUpperCase()));
+  document.getElementById('langCustom').classList.remove('open');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(i18n[l][k])el.innerHTML=i18n[l][k];});
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.dataset.i18nPlaceholder;if(i18n[l][k])el.placeholder=i18n[l][k];});
+  renderWatches();
+}
+
+// ── Watch data ────────────────────────────────────────────
+// Load watches from API
+fetch('/api/watches')
+  .then(r=>r.json())
+  .then(function(watches){
+    var active = watches.filter(function(w){return !w.sold;}).slice(0,4);
+    document.getElementById('watchGrid').innerHTML = active.map(function(w){
+      return '<div class="watch-card" onclick="location.href=\'watch.html?id='+w.id+'\'">'
+        +'<img src="images/'+w.img+'" loading="lazy">'
+        +'<div class="watch-info">'
+        +'<p class="watch-brand">'+w.brand+'</p>'
+        +(w.year ? '<p class="watch-year">'+w.year+'</p>' : '')
+        +'<h3 class="watch-name">'+w.name+'</h3>'
+        +'<p class="watch-desc-full">'+w.desc+'</p>'
+        +'<a href="watch.html?id='+w.id+'" class="watch-price">'+(w.price||'Price on request')+'</a>'
+        +'</div></div>';
+    }).join('');
+  });
+
+// ── Subject pre-fill ──────────────────────────────────────
+function setSubject(type){
+  const subjects={
+    sold:'Sold Watches — Request Archive',
+    search:'I am looking for a specific timepiece',
+    trade:'Watch Upgrade / Trade-In Request',
+    enquiry:'Enquiry about a timepiece'
+  };
+  const el=document.getElementById('fsubject');
+  if(el)el.value=subjects[type]||'';
+}
+
+// ── Nav ───────────────────────────────────────────────────
+document.getElementById('closeMenu').addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('active');
+});
+document.querySelectorAll('.nav-center a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('active');
+  });
+});
+
+// ── Search ────────────────────────────────────────────────
+var searchData=[];
+fetch('/api/watches').then(r=>r.json()).then(function(w){searchData=w;});
+function openSearch(){
+  document.getElementById('searchOverlay').classList.add('open');
+  setTimeout(function(){document.getElementById('searchInput').focus();},100);
+}
+function closeSearch(){
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.getElementById('searchInput').value='';
+  document.getElementById('searchResults').innerHTML='';
+}
+function getDecadeStart(q){
+  // "60","60s","1960","1960s" → 1960; "50","50s","1950","1950s" → 1950
+  var m=q.match(/^(1[89]\d0)s?$|^(\d0)s?$/);
+  if(!m) return null;
+  return m[1]?parseInt(m[1]):(1900+parseInt(m[2]));
+}
+function runSearch(q){
+  var res=document.getElementById('searchResults');
+  if(!q||q.length<2){res.innerHTML='';return;}
+  var ql=q.toLowerCase().trim();
+  var decade=getDecadeStart(ql);
+  var exactYear=ql.match(/^(1[89]\d{2})$/)?parseInt(ql):null;
+  var matches=searchData.filter(function(w){
+    var ym=w.year?(w.year.match(/(\d{4})/)||[])[1]:null;
+    var wy=ym?parseInt(ym):0;
+    if(decade) return wy>=decade&&wy<=decade+9;
+    if(exactYear) return wy===exactYear;
+    return (w.brand&&w.brand.toLowerCase().includes(ql))
+      ||(w.name&&w.name.toLowerCase().includes(ql))
+      ||(w.year&&w.year.toString().includes(ql));
+  });
+  if(!matches.length){res.innerHTML='<p class="search-no-result">No results found.</p>';return;}
+  res.innerHTML=matches.map(function(w){
+    return '<a href="watch.html?id='+w.id+'" class="search-result" onclick="closeSearch()">'
+      +'<img src="images/'+w.img+'" alt="">'
+      +'<div class="search-result-info">'
+      +'<span class="search-result-brand">'+w.brand+(w.year?' · c.'+w.year:'')+'</span>'
+      +'<span class="search-result-name">'+w.name+'</span>'
+      +'<span class="search-result-price">'+(w.price||'Price on request')+'</span>'
+      +'</div></a>';
+  }).join('');
+}
+document.getElementById('searchOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeSearch();});
+
+// ── Form ──────────────────────────────────────────────────
+function submitForm(e){
+  e.preventDefault();
+  const msgs={en:'Thank you. We will be in touch shortly.',fr:'Merci. Nous vous contacterons sous peu.',ru:'Спасибо. Мы свяжемся с вами в ближайшее время.'};
+  document.getElementById('formStatus').textContent=msgs[currentLang];
+  e.target.reset();
+  setTimeout(()=>document.getElementById('formStatus').textContent='',5000);
+}
+</script>
+
+<!-- AUDIO -->
+<audio id="bgAudio" loop preload="none">
+  <source src="audio/time.mp3" type="audio/mpeg">
+</audio>
+<button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Play / Pause music">
+  <svg class="icon-play" viewBox="0 0 24 24" fill="#F6961B"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24" fill="#F6961B"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+<script>
+function toggleAudio(){
+  var a=document.getElementById('bgAudio');
+  var btn=document.getElementById('audioBtn');
+  if(a.paused){a.volume=0.35;a.play();btn.classList.add('playing');}
+  else{a.pause();btn.classList.remove('playing');}
+}
+</script>
+</body>
+</html>

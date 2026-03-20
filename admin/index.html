@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Of Times — Admin</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#F9F5F0;font-family:'Segoe UI',Arial,sans-serif;font-size:14px;}
+
+/* LOGIN */
+#loginScreen{position:fixed;inset:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;z-index:100;}
+.login-box{background:#161616;border:1px solid #F6961B;padding:40px;width:340px;text-align:center;}
+.login-box img{height:56px;margin-bottom:24px;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
+.login-box h2{font-size:18px;margin-bottom:6px;color:#F6961B;letter-spacing:.08em;}
+.login-box p{font-size:12px;color:#888;margin-bottom:24px;}
+.login-box input{width:100%;padding:12px;background:#0a0a0a;border:1px solid #333;color:#fff;font-size:14px;margin-bottom:12px;outline:none;}
+.login-box input:focus{border-color:#F6961B;}
+.login-box .btn-login{width:100%;padding:13px;background:#F6961B;color:#000;border:none;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+.login-box .btn-login:hover{background:#e0850a;}
+#loginErr{color:#e74c3c;font-size:12px;margin-top:10px;}
+
+/* LAYOUT */
+#mainScreen{display:none;}
+.layout{display:flex;height:100vh;overflow:hidden;}
+aside{width:220px;background:#111;border-right:1px solid #1f1f1f;flex-shrink:0;display:flex;flex-direction:column;}
+.aside-logo{padding:20px 20px 16px;border-bottom:1px solid #1f1f1f;}
+.aside-logo img{height:44px;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
+nav.aside-nav{padding:16px 0;flex:1;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:11px 20px;cursor:pointer;font-size:13px;color:#888;transition:.15s;border-left:3px solid transparent;}
+.nav-item:hover{color:#F6961B;background:rgba(246,150,27,.05);}
+.nav-item.active{color:#F6961B;border-left-color:#F6961B;background:rgba(246,150,27,.07);}
+.nav-item span.icon{font-size:16px;width:20px;text-align:center;}
+.aside-bottom{padding:16px 20px;border-top:1px solid #1f1f1f;}
+.aside-bottom a{color:#555;font-size:12px;text-decoration:none;}
+.aside-bottom a:hover{color:#F6961B;}
+
+.content{flex:1;overflow-y:auto;}
+.top-bar{background:#111;border-bottom:1px solid #1f1f1f;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;}
+.top-bar h1{font-size:16px;font-weight:400;color:#F9F5F0;}
+.top-bar .actions{display:flex;gap:10px;}
+
+/* PANELS */
+.panel{display:none;padding:28px;}
+.panel.active{display:block;}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+.stat{background:#161616;border:1px solid #1f1f1f;padding:20px;text-align:center;}
+.stat-num{font-size:30px;color:#F6961B;font-weight:300;margin-bottom:4px;}
+.stat-label{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.12em;}
+
+/* BUTTONS */
+.btn{padding:9px 20px;background:#F6961B;color:#000;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.15s;}
+.btn:hover{background:#e0850a;}
+.btn-outline{background:none;border:1px solid #444;color:#aaa;}
+.btn-outline:hover{border-color:#F6961B;color:#F6961B;}
+.btn-danger{background:#c0392b;color:#fff;}
+.btn-danger:hover{background:#e74c3c;}
+.btn-sm{padding:6px 14px;font-size:11px;}
+
+/* TABLE */
+.table-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.table-head h2{font-size:15px;font-weight:400;}
+.search-input{background:#161616;border:1px solid #333;color:#fff;padding:8px 14px;font-size:12px;outline:none;width:200px;}
+.search-input:focus{border-color:#F6961B;}
+table{width:100%;border-collapse:collapse;}
+th{background:#161616;padding:11px 14px;text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#666;border-bottom:1px solid #222;}
+td{padding:13px 14px;border-bottom:1px solid #181818;vertical-align:middle;}
+tr:hover td{background:#0f0f0f;}
+.watch-thumb{width:52px;height:52px;object-fit:cover;}
+.badge{display:inline-block;padding:3px 9px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;}
+.badge-active{background:rgba(46,213,115,.12);color:#2ed573;}
+.badge-sold{background:rgba(192,57,43,.12);color:#e74c3c;}
+.row-actions{display:flex;gap:6px;}
+
+/* CONTENT EDITOR */
+.sections-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.section-card{background:#161616;border:1px solid #1f1f1f;padding:22px;}
+.section-card h3{font-size:13px;color:#F6961B;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #222;}
+.field-group{margin-bottom:14px;}
+.field-group label{display:block;font-size:10px;color:#666;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.field-group input,.field-group textarea{width:100%;background:#0a0a0a;border:1px solid #2a2a2a;color:#F9F5F0;padding:9px 11px;font-size:13px;outline:none;font-family:inherit;}
+.field-group input:focus,.field-group textarea:focus{border-color:#F6961B;}
+.field-group textarea{min-height:72px;resize:vertical;line-height:1.6;}
+.field-note{font-size:10px;color:#555;margin-top:3px;font-style:italic;}
+.save-section{display:flex;justify-content:flex-end;margin-top:6px;}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:300;display:none;align-items:center;justify-content:center;padding:20px;}
+.overlay.open{display:flex;}
+.modal{background:#161616;border:1px solid #2a2a2a;width:100%;max-width:540px;max-height:88vh;overflow-y:auto;}
+.modal-hdr{padding:18px 22px;border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center;}
+.modal-hdr h3{font-size:15px;font-weight:400;color:#F6961B;}
+.modal-hdr button{background:none;border:none;color:#666;font-size:20px;cursor:pointer;}
+.modal-hdr button:hover{color:#fff;}
+.modal-body{padding:22px;}
+.modal-ftr{padding:14px 22px;border-top:1px solid #222;display:flex;justify-content:flex-end;gap:10px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:10px;color:#666;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:#0a0a0a;border:1px solid #2a2a2a;color:#F9F5F0;padding:9px 11px;font-size:13px;outline:none;font-family:inherit;}
+.form-group input:focus,.form-group textarea:focus{border-color:#F6961B;}
+.form-group textarea{min-height:72px;resize:vertical;}
+.form-group select option{background:#0a0a0a;}
+.preview-img{width:100%;max-height:140px;object-fit:cover;margin-top:8px;display:none;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:#F6961B;color:#000;padding:12px 22px;font-size:13px;font-weight:600;z-index:999;transform:translateY(60px);opacity:0;transition:.3s;pointer-events:none;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+@media(max-width:700px){
+  aside{display:none;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .sections-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <img src="../images/logo.png" alt="">
+    <h2>Admin Panel</h2>
+    <p>Sign Of Times — Collection Manager</p>
+    <input type="password" id="passInput" placeholder="Password" onkeydown="if(event.key==='Enter')login()">
+    <button class="btn-login" onclick="login()">Sign In</button>
+    <div id="loginErr"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="mainScreen">
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="aside-logo"><img src="../images/logo.png" alt="Sign Of Times"></div>
+    <nav class="aside-nav">
+      <div class="nav-item active" onclick="showPanel('dashboard')"><span class="icon">📊</span> Dashboard</div>
+      <div class="nav-item" onclick="showPanel('watches')"><span class="icon">⌚</span> Watches</div>
+      <div class="nav-item" onclick="showPanel('content')"><span class="icon">✏️</span> Page Content</div>
+    </nav>
+    <div class="aside-bottom">
+      <a href="../index.html" target="_blank">← View Site</a>
+    </div>
+  </aside>
+
+  <div class="content">
+    <div class="top-bar">
+      <h1 id="panelTitle">Dashboard</h1>
+      <div class="actions">
+        <button class="btn btn-sm" id="topBtn" onclick="openAddModal()" style="display:none">+ Add Watch</button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Total Watches</div></div>
+        <div class="stat"><div class="stat-num" id="statActive">—</div><div class="stat-label">For Sale</div></div>
+        <div class="stat"><div class="stat-num" id="statSold">—</div><div class="stat-label">Sold</div></div>
+        <div class="stat"><div class="stat-num" id="statValue">—</div><div class="stat-label">Listed Value</div></div>
+      </div>
+      <p style="color:#555;font-size:13px;">Use the sidebar to manage your collection or edit page content.</p>
+    </div>
+
+    <!-- WATCHES -->
+    <div class="panel" id="panel-watches">
+      <div class="table-head">
+        <h2>Collection</h2>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <input class="search-input" type="text" placeholder="Search watches..." oninput="filterWatches(this.value)">
+          <button class="btn btn-sm" onclick="openAddModal()">+ Add Watch</button>
+        </div>
+      </div>
+      <table>
+        <thead><tr>
+          <th>Photo</th><th>Brand</th><th>Name</th><th>Price</th><th>Status</th><th>Actions</th>
+        </tr></thead>
+        <tbody id="watchesBody"></tbody>
+      </table>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="panel" id="panel-content">
+      <div id="contentForm"></div>
+    </div>
+
+  </div><!-- /.content -->
+</div><!-- /.layout -->
+</div><!-- /#mainScreen -->
+
+<!-- WATCH MODAL -->
+<div class="overlay" id="watchModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <h3 id="modalTitle">Add Watch</h3>
+      <button onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editId">
+      <div class="form-row">
+        <div class="form-group"><label>Brand *</label><input id="fBrand" placeholder="Patek Philippe"></div>
+        <div class="form-group"><label>Name *</label><input id="fName" placeholder="Calatrava · Blue Dial"></div>
+      </div>
+      <div class="form-group"><label>Description</label><textarea id="fDesc" placeholder="18k White Gold · Manual Wind · c.1970s"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Price</label><input id="fPrice" placeholder="$28,500"></div>
+        <div class="form-group"><label>Year / Era</label><input id="fYear" placeholder="c.1970"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"></div>
+        <div class="form-group"><label>Status</label>
+          <select id="fSold">
+            <option value="false">Active — For Sale</option>
+            <option value="true">Sold</option>
+          </select>
+        </div>
+      </div>
+      </div>
+      <div class="form-group">
+        <label>Photo filename (in /images/)</label>
+        <input id="fImgName" placeholder="watch03.jpg">
+        <img id="previewImg" class="preview-img">
+      </div>
+      <div class="form-group">
+        <label>Upload new photo</label>
+        <input type="file" id="fImgFile" accept="image/*" onchange="previewUpload(this)" style="color:#aaa;">
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-outline btn-sm" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-sm" onclick="saveWatch()">Save Watch</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = '';
+let token = '';
+let watches = [];
+let siteContent = {};
+
+// ─── AUTH ───────────────────────────────────────────
+function login(){
+  token = document.getElementById('passInput').value;
+  fetch(`${API}/api/watches`, {headers:{Authorization:`Bearer ${token}`}})
+    .then(r => r.ok ? r.json() : Promise.reject('wrong password'))
+    .then(data => {
+      watches = data;
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('mainScreen').style.display = 'block';
+      renderWatches();
+      updateStats();
+      loadContent();
+    })
+    .catch(() => { document.getElementById('loginErr').textContent = 'Incorrect password'; });
+}
+
+// ─── NAVIGATION ──────────────────────────────────────
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  const titles = {dashboard:'Dashboard', watches:'Watches', content:'Page Content'};
+  document.getElementById('panelTitle').textContent = titles[id]||id;
+  document.getElementById('topBtn').style.display = id==='watches' ? '' : 'none';
+}
+
+// ─── WATCHES ──────────────────────────────────────────
+function renderWatches(list = watches){
+  document.getElementById('watchesBody').innerHTML = list.map(w => `
+    <tr>
+      <td><img class="watch-thumb" src="../images/${w.img}" onerror="this.style.opacity=.2"></td>
+      <td style="color:#F6961B;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">${w.brand}</td>
+      <td style="font-size:13px;">${w.name}<br><small style="color:#555;font-size:11px;">${w.desc.substring(0,50)}...</small></td>
+      <td style="color:#F6961B;font-size:13px;">${w.price}</td>
+      <td><span class="badge ${w.sold?'badge-sold':'badge-active'}">${w.sold?'Sold':'Active'}</span></td>
+      <td><div class="row-actions">
+        <button class="btn btn-outline btn-sm" onclick="openEditModal(${w.id})">Edit</button>
+        <button class="btn btn-sm ${w.sold?'':'btn-outline'} btn-sm" onclick="toggleSold(${w.id})" style="${w.sold?'':'color:#aaa'}">${w.sold?'Restore':'Sold'}</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteWatch(${w.id})">✕</button>
+      </div></td>
+    </tr>`).join('');
+}
+
+function updateStats(){
+  const act = watches.filter(w=>!w.sold), sol = watches.filter(w=>w.sold);
+  const val = act.reduce((s,w)=>{return s+(parseFloat((w.price||'').replace(/[$,]/g,''))||0);},0);
+  document.getElementById('statTotal').textContent = watches.length;
+  document.getElementById('statActive').textContent = act.length;
+  document.getElementById('statSold').textContent = sol.length;
+  document.getElementById('statValue').textContent = val?'$'+val.toLocaleString():'—';
+}
+
+function filterWatches(q){
+  q = q.toLowerCase();
+  renderWatches(watches.filter(w=>w.brand.toLowerCase().includes(q)||w.name.toLowerCase().includes(q)));
+}
+
+function openAddModal(){
+  document.getElementById('modalTitle').textContent = 'Add Watch';
+  document.getElementById('editId').value = '';
+  ['fBrand','fName','fDesc','fPrice','fImgName','fYear'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fSold').value = 'false';
+  document.getElementById('previewImg').style.display = 'none';
+  document.getElementById('watchModal').classList.add('open');
+}
+
+function openEditModal(id){
+  const w = watches.find(x=>x.id===id); if(!w) return;
+  document.getElementById('modalTitle').textContent = 'Edit Watch';
+  document.getElementById('editId').value = id;
+  document.getElementById('fBrand').value = w.brand;
+  document.getElementById('fName').value = w.name;
+  document.getElementById('fDesc').value = w.desc;
+  document.getElementById('fPrice').value = w.price;
+  document.getElementById('fImgName').value = w.img;
+  document.getElementById('fSold').value = w.sold?'true':'false';
+  document.getElementById('fYear').value = w.year||'';
+  const p = document.getElementById('previewImg');
+  p.src = `../images/${w.img}`; p.style.display='block';
+  document.getElementById('watchModal').classList.add('open');
+}
+
+function closeModal(){ document.getElementById('watchModal').classList.remove('open'); }
+
+function previewUpload(input){
+  const file = input.files[0]; if(!file) return;
+  const r = new FileReader();
+  r.onload = e=>{ const p=document.getElementById('previewImg'); p.src=e.target.result; p.style.display='block'; };
+  r.readAsDataURL(file);
+}
+
+async function saveWatch(){
+  const editId = document.getElementById('editId').value;
+  const data = {
+    brand:document.getElementById('fBrand').value,
+    name:document.getElementById('fName').value,
+    desc:document.getElementById('fDesc').value,
+    price:document.getElementById('fPrice').value,
+    img:document.getElementById('fImgName').value,
+    sold:document.getElementById('fSold').value==='true',
+    year:document.getElementById('fYear').value
+  };
+  const fi = document.getElementById('fImgFile');
+  if(fi.files[0]){
+    const fd = new FormData(); fd.append('file', fi.files[0]);
+    const r = await fetch(`${API}/api/upload`,{method:'POST',headers:{Authorization:`Bearer ${token}`},body:fd});
+    const res = await r.json(); data.img = res.filename;
+  }
+  const method = editId!=='' ? 'PUT':'POST';
+  const url = editId!=='' ? `${API}/api/watches/${editId}`:`${API}/api/watches`;
+  await fetch(url,{method,headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify(data)});
+  const r2 = await fetch(`${API}/api/watches`);
+  watches = await r2.json(); renderWatches(); updateStats(); closeModal();
+  showToast(editId!==''?'Watch updated ✓':'Watch added ✓');
+}
+
+async function toggleSold(id){
+  const w = watches.find(x=>x.id===id); if(!w) return;
+  await fetch(`${API}/api/watches/${id}`,{method:'PUT',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify({sold:!w.sold})});
+  const r = await fetch(`${API}/api/watches`); watches = await r.json(); renderWatches(); updateStats();
+  showToast(w.sold?'Restored ✓':'Marked as sold ✓');
+}
+
+async function deleteWatch(id){
+  if(!confirm('Delete this watch? Cannot be undone.')) return;
+  await fetch(`${API}/api/watches/${id}`,{method:'DELETE',headers:{Authorization:`Bearer ${token}`}});
+  const r = await fetch(`${API}/api/watches`); watches = await r.json(); renderWatches(); updateStats();
+  showToast('Watch deleted');
+}
+
+// ─── CONTENT EDITOR ──────────────────────────────────
+async function loadContent(){
+  const r = await fetch(`${API}/api/content`);
+  siteContent = await r.json();
+  buildContentForm();
+}
+
+const SECTIONS = [
+  {key:'hero', label:'🎬 Hero Banner', fields:[
+    {f:'tagline', label:'Tagline', type:'input'},
+    {f:'cta', label:'Button Text', type:'input'}
+  ]},
+  {key:'about', label:'👤 Who We Are', fields:[
+    {f:'label', label:'Section Label', type:'input'},
+    {f:'title', label:'Title (HTML ok)', type:'input'},
+    {f:'text1', label:'Paragraph 1', type:'textarea'},
+    {f:'text2', label:'Paragraph 2', type:'textarea'},
+    {f:'signature', label:'Signature', type:'input'}
+  ]},
+  {key:'collection', label:'⌚ Timepieces Section', fields:[
+    {f:'label', label:'Section Label', type:'input'},
+    {f:'title', label:'Title (HTML ok)', type:'input'},
+    {f:'subtitle', label:'Subtitle', type:'input'}
+  ]},
+  {key:'gone', label:'💔 Gone Too Soon', fields:[
+    {f:'label', label:'Label', type:'input'},
+    {f:'title', label:'Title', type:'input'},
+    {f:'desc', label:'Description', type:'textarea'}
+  ]},
+  {key:'wishlist', label:'🔍 Wishlist / Find', fields:[
+    {f:'label', label:'Label', type:'input'},
+    {f:'title', label:'Title', type:'input'},
+    {f:'desc', label:'Description', type:'textarea'}
+  ]},
+  {key:'trade', label:'🔄 Upgrade / Trade', fields:[
+    {f:'label', label:'Label', type:'input'},
+    {f:'title', label:'Title', type:'input'},
+    {f:'desc', label:'Description', type:'textarea'}
+  ]},
+  {key:'contact', label:'✉️ Contact Section', fields:[
+    {f:'label', label:'Label', type:'input'},
+    {f:'title', label:'Title (HTML ok)', type:'input'},
+    {f:'subtitle', label:'Subtitle', type:'input'},
+    {f:'button', label:'Button Text', type:'input'}
+  ]},
+  {key:'footer', label:'🔻 Footer', fields:[
+    {f:'tagline', label:'Tagline', type:'input'},
+    {f:'copyright', label:'Copyright', type:'input'}
+  ]}
+];
+
+function buildContentForm(){
+  const el = document.getElementById('contentForm');
+  el.innerHTML = `<div class="sections-grid">${
+    SECTIONS.map(sec=>`
+      <div class="section-card">
+        <h3>${sec.label}</h3>
+        ${sec.fields.map(fd=>`
+          <div class="field-group">
+            <label>${fd.label}</label>
+            ${fd.type==='textarea'
+              ? `<textarea id="c_${sec.key}_${fd.f}">${(siteContent[sec.key]||{})[fd.f]||''}</textarea>`
+              : `<input id="c_${sec.key}_${fd.f}" value="${((siteContent[sec.key]||{})[fd.f]||'').replace(/"/g,'&quot;')}">`
+            }
+          </div>`).join('')}
+        <div class="save-section">
+          <button class="btn btn-sm" onclick="saveSection('${sec.key}')">Save ${sec.label.split(' ').slice(1).join(' ')}</button>
+        </div>
+      </div>`).join('')
+  }</div>`;
+}
+
+async function saveSection(key){
+  const sec = SECTIONS.find(s=>s.key===key); if(!sec) return;
+  sec.fields.forEach(fd=>{
+    if(!siteContent[key]) siteContent[key]={};
+    siteContent[key][fd.f] = document.getElementById(`c_${key}_${fd.f}`).value;
+  });
+  await fetch(`${API}/api/content`,{method:'PUT',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify(siteContent)});
+  showToast('Section saved ✓ — refresh the site to see changes');
+}
+
+// ─── TOAST ───────────────────────────────────────────
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+document.getElementById('passInput').focus();
+</script>
+</body>
+</html>

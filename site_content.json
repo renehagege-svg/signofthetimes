@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "tagline": "Take a ride in our Times Machine",
+    "cta": "Explore Collection"
+  },
+  "about": {
+    "label": "Who We Are",
+    "title": "We live for the <em>hunt</em>.",
+    "text1": "Sign Of Times was born from a lifelong obsession with the rarest timepieces on earth. We travel the world to find watches that most collectors will never encounter — pieces with soul, with history, with stories no certificate can fully capture.",
+    "text2": "Every watch we offer has been personally sourced, authenticated, and chosen because it moved us. We don't deal in volume. We deal in meaning.",
+    "signature": "— Steeve, Founder"
+  },
+  "collection": {
+    "label": "Current Selection",
+    "title": "Featured <em>Timepieces</em>",
+    "subtitle": "A curated selection from our current collection."
+  },
+  "gone": {
+    "label": "Gone Too Soon",
+    "title": "These ones got away.",
+    "desc": "Every piece here found its home. A reminder of what moves through our hands."
+  },
+  "wishlist": {
+    "label": "Miss Your Dream Timepiece?",
+    "title": "We'll find it for you.",
+    "desc": "Tell us what you're looking for. We search so you don't have to."
+  },
+  "trade": {
+    "label": "Want an Upgrade or Trade?",
+    "title": "Let's make a deal.",
+    "desc": "Buying, selling, or trading — we're here to help you move up."
+  },
+  "contact": {
+    "label": "Get In Touch",
+    "title": "Enquire about a <em>piece</em>",
+    "subtitle": "Whether buying, selling, or trading — we're here to help.",
+    "email_placeholder": "Your email",
+    "message_placeholder": "Tell us about the piece you're interested in...",
+    "button": "Send Enquiry"
+  },
+  "footer": {
+    "tagline": "Curated timepieces for the discerning collector.",
+    "copyright": "© 2025 Sign Of Times. All rights reserved."
+  }
+}

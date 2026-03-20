@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upgrade or Trade — Sign Of Times</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--dark:#111;--darker:#161616;--peach:#E8C4A0;--peach-light:#F5DEC8;--white:#F9F5F0;--gray:#888880;--border:rgba(232,196,160,0.2);--gold:#F6961B;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:300;}
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:6px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(246,150,27,0.3);}
+  .nav-logo img{height:90px;width:auto;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
+  .nav-back{color:#F6961B;text-decoration:none;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s;}
+  .nav-back:hover{opacity:1;}
+  .page-hero{padding:140px 60px 60px;background:var(--darker);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);margin-bottom:14px;}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;margin-bottom:18px;}
+  .page-hero h1 em{font-style:italic;color:var(--peach-light);}
+  .page-hero p{font-size:13px;color:rgba(249,245,240,.65);line-height:1.9;margin-bottom:24px;}
+  .hero-img img{width:100%;aspect-ratio:4/5;object-fit:cover;}
+  .steps{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .step{display:flex;gap:16px;align-items:flex-start;}
+  .step-num{width:28px;height:28px;border:1px solid var(--peach);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--peach);flex-shrink:0;}
+  .step-text{font-size:12px;line-height:1.7;color:rgba(249,245,240,.7);}
+  .form-section{padding:80px 60px;max-width:760px;margin:0 auto;}
+  .form-section h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;margin-bottom:8px;}
+  .form-section h2 em{font-style:italic;color:var(--peach-light);}
+  .form-section .sub{font-size:12px;color:var(--gray);margin-bottom:40px;line-height:1.7;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .form-full{grid-column:1/-1;}
+  input,select,textarea{width:100%;padding:13px 16px;background:var(--darker);border:1px solid var(--border);color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;outline:none;transition:border-color .2s;font-weight:300;}
+  input:focus,select:focus,textarea:focus{border-color:var(--peach);}
+  select option{background:var(--dark);}
+  label{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+  .form-group{display:flex;flex-direction:column;}
+  .file-zone{border:1px dashed var(--border);padding:32px;text-align:center;cursor:pointer;transition:border-color .3s;}
+  .file-zone:hover{border-color:var(--peach);}
+  .file-zone p{font-size:12px;color:var(--gray);line-height:1.8;}
+  .file-zone span{color:var(--peach);cursor:pointer;}
+  .btn-submit{width:100%;padding:16px;background:var(--peach);color:var(--black);border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin-top:8px;transition:background .3s;}
+  .btn-submit:hover{background:var(--peach-light);}
+  #formStatus{margin-top:16px;font-size:12px;color:var(--peach);text-align:center;}
+  @media(max-width:900px){nav{padding:12px 20px;}.nav-logo img{height:90px;}.page-hero{padding:110px 20px 40px;grid-template-columns:1fr;}.hero-img{display:none;}.form-section{padding:40px 20px;}.form-grid{grid-template-columns:1fr;}}
+  @media(max-width:600px){nav{padding:10px 16px;}.nav-logo img{height:72px;}.page-hero{padding:90px 16px 32px;}.form-section{padding:32px 16px;}input,select,textarea{font-size:16px;}.btn-submit{font-size:10px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Sign Of Times"></a>
+  <a href="index.html" class="nav-back">← Back to Collection</a>
+</nav>
+
+<div class="page-hero">
+  <div>
+    <p class="eyebrow">Trade-In Program</p>
+    <h1>Want an Upgrade<br>or <em>Trade?</em></h1>
+    <p>We buy, sell, and trade exceptional vintage and luxury timepieces. Whether you're looking to upgrade your collection or simply sell a piece, we offer fair and transparent valuations.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><p class="step-text">Fill in the form below with details about your watch and attach photos.</p></div>
+      <div class="step"><div class="step-num">2</div><p class="step-text">We review your submission and get back to you within 48 hours with an estimate.</p></div>
+      <div class="step"><div class="step-num">3</div><p class="step-text">If you agree, we arrange secure pickup or meet in person. Payment on the spot.</p></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="images/watch08.jpg" alt="Luxury Trade">
+  </div>
+</div>
+
+<div class="form-section">
+  <h2>Tell us about<br><em>your timepiece</em></h2>
+  <p class="sub">All submissions are treated with complete discretion. Your information is never shared.</p>
+
+  <form onsubmit="submitForm(event)">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" placeholder="Full name" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone (optional)</label>
+        <input type="tel" placeholder="+1 (___) ___-____">
+      </div>
+      <div class="form-group">
+        <label>Request Type *</label>
+        <select required>
+          <option value="">Select...</option>
+          <option value="sell">I want to sell my watch</option>
+          <option value="trade">I want to trade / upgrade</option>
+          <option value="estimate">I want a valuation only</option>
+        </select>
+      </div>
+
+      <div class="form-group form-full" style="border-top:1px solid var(--border);padding-top:24px;margin-top:8px;">
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--peach);margin-bottom:18px;">Watch Details</p>
+      </div>
+
+      <div class="form-group">
+        <label>Brand *</label>
+        <input type="text" placeholder="e.g. Rolex, Patek Philippe..." required>
+      </div>
+      <div class="form-group">
+        <label>Model / Reference</label>
+        <input type="text" placeholder="e.g. Submariner, Calatrava 5119">
+      </div>
+      <div class="form-group">
+        <label>Year (approx.)</label>
+        <input type="text" placeholder="e.g. 1970s, 1985">
+      </div>
+      <div class="form-group">
+        <label>Condition</label>
+        <select>
+          <option value="">Select condition...</option>
+          <option value="mint">Mint / Unworn</option>
+          <option value="excellent">Excellent</option>
+          <option value="good">Good</option>
+          <option value="fair">Fair / Needs service</option>
+        </select>
+      </div>
+      <div class="form-group form-full">
+        <label>Do you have the box &amp; papers?</label>
+        <select>
+          <option value="">Select...</option>
+          <option value="both">Yes, box and papers</option>
+          <option value="box">Box only</option>
+          <option value="papers">Papers only</option>
+          <option value="none">No</option>
+        </select>
+      </div>
+      <div class="form-group form-full">
+        <label>Your Asking Price (optional)</label>
+        <input type="text" placeholder="e.g. $15,000 or open to offers">
+      </div>
+      <div class="form-group form-full">
+        <label>Additional Details</label>
+        <textarea style="min-height:100px;resize:vertical;" placeholder="Any additional information about the watch, its history, service records, etc."></textarea>
+      </div>
+
+      <div class="form-group form-full">
+        <label>Photos of Your Watch</label>
+        <div class="file-zone" onclick="document.getElementById('photoUpload').click()">
+          <p>📷 Click to attach photos<br><span>Dial, case, caseback, bracelet — multiple photos welcome</span></p>
+          <input id="photoUpload" type="file" accept="image/*" multiple style="display:none;">
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-submit">Submit for Valuation</button>
+    <p id="formStatus"></p>
+  </form>
+</div>
+
+<footer style="padding:32px 60px;background:var(--darker);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);">
+  <img src="images/logo.png" alt="Sign Of Times" style="height:36px;opacity:.7;">
+  <p style="font-size:11px;color:var(--gray);">© 2026 Sign Of Times</p>
+</footer>
+
+<script>
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('formStatus').textContent = 'Thank you. We will review your submission and get back to you within 48 hours.';
+  e.target.reset();
+  setTimeout(()=>document.getElementById('formStatus').textContent='', 6000);
+}
+document.getElementById('photoUpload').addEventListener('change', function(){
+  const zone = this.closest('.file-zone').querySelector('p');
+  zone.innerHTML = `✅ ${this.files.length} photo(s) attached`;
+});
+</script>
+<footer style="flex-direction:column;align-items:center;gap:16px;">
+  <div class="footer-logo" style="text-align:center;">
+    <img src="images/logo.png" alt="Sign Of Times">
+    <p style="color:rgba(249,245,240,0.35);font-size:10px;letter-spacing:.15em;margin-top:10px;">© 2026 Sign Of The Times. All rights reserved.</p>
+  </div>
+  <div style="display:flex;gap:20px;align-items:center;">
+    <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#F6961B"/></svg>
+    </a>
+    <a href="https://www.facebook.com/signofthetimeswatch" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><path d="M13 21V13h2.5l.5-3H13V8.5c0-.83.42-1.5 1.5-1.5H16V4.5S15 4 13.5 4C11.5 4 10 5.5 10 8v2H7.5v3H10v8" stroke="#F6961B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</footer>
+</body>
+</html>

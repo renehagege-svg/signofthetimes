@@ -1,0 +1,122 @@
+[
+  {
+    "id": 0,
+    "img": "watch03.jpg",
+    "brand": "Patek Philippe",
+    "name": "Calatrava \u00b7 Blue Dial",
+    "desc": "18k White Gold \u00b7 Sunburst Blue Dial \u00b7 Integrated Mesh Bracelet \u00b7 Manual Wind",
+    "price": "$28,500",
+    "sold": false,
+    "year": "c.1970"
+  },
+  {
+    "id": 1,
+    "img": "watch04.jpg",
+    "brand": "Audemars Piguet",
+    "name": "Diamond Lattice Dial",
+    "desc": "18k Yellow Gold \u00b7 Extraordinary Hand-Engraved Lattice Dial \u00b7 Manual Wind \u00b7 c.1960s",
+    "price": "$47,500",
+    "sold": false,
+    "year": "c.1960s"
+  },
+  {
+    "id": 2,
+    "img": "watch05.jpg",
+    "brand": "Patek Philippe",
+    "name": "Golden Ellipse",
+    "desc": "18k Yellow Gold \u00b7 Dark Gradient Dial \u00b7 Iconic 1968 Design \u00b7 Manual Wind",
+    "price": "$18,000",
+    "sold": false,
+    "year": "c.1968"
+  },
+  {
+    "id": 3,
+    "img": "watch06.jpg",
+    "brand": "Patek Philippe",
+    "name": "Calatrava \u00b7 Yellow Gold",
+    "desc": "18k Yellow Gold \u00b7 Sunburst Dial \u00b7 Classic Dress Watch \u00b7 Manual Wind \u00b7 c.1975",
+    "price": "$22,500",
+    "sold": false,
+    "year": "c.1975"
+  },
+  {
+    "id": 4,
+    "img": "watch07.jpg",
+    "brand": "Audemars Piguet",
+    "name": "Dazzle Duo",
+    "desc": "Bicolor Steel & Gold \u00b7 Diamond-Set Bezel \u00b7 White Diamond Dial \u00b7 c.1985",
+    "price": "$35,000",
+    "sold": false,
+    "year": "c.1985"
+  },
+  {
+    "id": 5,
+    "img": "watch08.jpg",
+    "brand": "Audemars Piguet",
+    "name": "Diamond Pav\u00e9",
+    "desc": "18k Yellow Gold \u00b7 Full Diamond Pav\u00e9 Case & Dial \u00b7 Haute Joaillerie \u00b7 c.1990",
+    "price": "$55,000",
+    "sold": false,
+    "year": "c.1990"
+  },
+  {
+    "id": 6,
+    "img": "watch09.jpg",
+    "brand": "Vintage Luxury",
+    "name": "Yellow Gold Classic",
+    "desc": "18k Yellow Gold \u00b7 Estate Collection \u00b7 Pristine Vintage Condition \u00b7 c.1965",
+    "price": "$12,500",
+    "sold": false,
+    "year": "c.1965"
+  },
+  {
+    "id": 7,
+    "img": "watch10.jpg",
+    "brand": "Vintage Luxury",
+    "name": "Yellow Gold Dress",
+    "desc": "18k Yellow Gold \u00b7 Textured Dial \u00b7 Integrated Mesh Bracelet \u00b7 c.1970",
+    "price": "$9,800",
+    "sold": false,
+    "year": "c.1970"
+  },
+  {
+    "id": 8,
+    "img": "watch14.jpg",
+    "brand": "Vintage Luxury",
+    "name": "Classic Dress Watch",
+    "desc": "White Gold \u00b7 Clean Minimalist Dial \u00b7 The Purest Expression of Vintage Elegance",
+    "price": "$14,500",
+    "sold": false,
+    "year": "c.1972"
+  },
+  {
+    "id": 9,
+    "img": "watch16.jpg",
+    "brand": "Vintage Luxury",
+    "name": "Boutique Piece",
+    "desc": "Limited Boutique Edition \u00b7 Rare Find \u00b7 Immaculate Condition",
+    "price": "$8,900",
+    "sold": false,
+    "year": "c.1978"
+  },
+  {
+    "id": 10,
+    "img": "watch17.jpg",
+    "brand": "Vacheron Constantin",
+    "name": "Mesh Bracelet",
+    "desc": "18k Yellow Gold \u00b7 Integrated Mesh Bracelet \u00b7 Hallmark of Fine Watchmaking \u00b7 c.1970s",
+    "price": "$24,000",
+    "sold": false,
+    "year": "c.1970s"
+  },
+  {
+    "id": 11,
+    "img": "watch18.jpg",
+    "brand": "Estate Collection",
+    "name": "Holiday Special",
+    "desc": "2025 Acquisition \u00b7 Mint Condition \u00b7 Full Documentation Available",
+    "price": "$16,500",
+    "sold": false,
+    "year": "c.2025"
+  }
+]
