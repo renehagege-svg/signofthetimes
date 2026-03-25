@@ -337,6 +337,7 @@
       <h1 class="watch-title" id="detailName"></h1>
       <p class="watch-ref" id="detailRef"></p>
       <p class="watch-price" id="detailPrice">Price on request</p>
+      <p class="watch-gender" id="detailGender" style="color:#d4a04a;font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-top:8px;"></p>
 
       <table class="spec-table" id="specTable"></table>
 
@@ -365,18 +366,18 @@
 
 <script>
 const watches = [
-  {id:0,img:'watch03.jpg',imgs:['watch03.jpg','watch04.jpg'],brand:'Patek Philippe',name:'Calatrava · Blue Dial',ref:'Ref. 5119J',price:'Price on request',desc:'A superb example of the timeless Patek Philippe Calatrava, featuring a stunning sunburst blue dial with an integrated mesh bracelet. A rare find in this condition.',specs:{Movement:'Manual wind',Case:'18k White Gold',Dial:'Blue sunburst',Bracelet:'Gold mesh integrated',Year:'c. 1970s',Condition:'Excellent',Papers:'Yes — Full Set'}},
-  {id:1,img:'watch04.jpg',imgs:['watch04.jpg','watch03.jpg'],brand:'Audemars Piguet',name:'Diamond Lattice Dial',ref:'Estate Piece',price:'Price on request',desc:'A rare Audemars Piguet in 18k yellow gold with an extraordinary hand-engraved diamond lattice dial. An exceptional estate piece of the highest order.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Hand-engraved diamond lattice',Year:'c. 1960s',Condition:'Very Good',Papers:'No'}},
-  {id:2,img:'watch05.jpg',imgs:['watch05.jpg'],brand:'Patek Philippe',name:'Golden Ellipse',ref:'Ref. 3548',price:'Price on request',desc:'The iconic Patek Philippe Golden Ellipse with a dark gradient dial. One of the most elegant watch designs of the 20th century.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Dark gradient',Year:'c. 1980s',Condition:'Excellent',Papers:'Box only'}},
-  {id:3,img:'watch06.jpg',imgs:['watch06.jpg'],brand:'Patek Philippe',name:'Calatrava · Yellow Gold',ref:'Vintage',price:'Price on request',desc:'A classic Patek Philippe Calatrava in yellow gold with a beautiful sunburst dial. Pure elegance distilled into a perfect dress watch.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Sunburst',Year:'c. 1975',Condition:'Good — serviced',Papers:'No'}},
-  {id:4,img:'watch07.jpg',imgs:['watch07.jpg'],brand:'Audemars Piguet',name:'Dazzle Duo',ref:'Estate',price:'Price on request',desc:'A stunning bicolor Audemars Piguet with diamond-set bezel. Where glamour meets horological excellence.',specs:{Movement:'Quartz',Case:'Bicolor steel & gold',Dial:'White diamond',Bracelet:'Integrated bicolor',Year:'c. 1985',Condition:'Excellent'}},
-  {id:5,img:'watch08.jpg',imgs:['watch08.jpg'],brand:'Audemars Piguet',name:'Diamond Pavé',ref:'Estate',price:'Price on request',desc:'Full diamond pavé Audemars Piguet in 18k yellow gold. An extraordinary example of haute horlogerie meets haute joaillerie.',specs:{Movement:'Quartz',Case:'18k Yellow Gold, diamond-set',Dial:'Full diamond pavé',Year:'c. 1990',Condition:'Mint'}},
-  {id:6,img:'watch09.jpg',imgs:['watch09.jpg'],brand:'Vintage Luxury',name:'Yellow Gold Classic',ref:'Estate',price:'Price on request',desc:'A refined vintage dress watch from a prestigious estate collection. Understated elegance at its finest.',specs:{Year:'c. 1965',Condition:'Good',Case:'18k Yellow Gold'}},
-  {id:7,img:'watch10.jpg',imgs:['watch10.jpg'],brand:'Vintage Luxury',name:'Yellow Gold Dress',ref:'Estate',price:'Price on request',desc:'Elegant vintage dress watch with textured dial and integrated mesh bracelet. A quintessential piece from the golden age of watchmaking.',specs:{Year:'c. 1970',Condition:'Good',Case:'Yellow Gold',Bracelet:'Mesh integrated'}},
-  {id:8,img:'watch14.jpg',imgs:['watch14.jpg'],brand:'Vintage Luxury',name:'Classic Dress Watch',ref:'Estate',price:'Price on request',desc:'A pristine vintage dress watch in white gold with a clean, minimalist dial. Timeless refinement.',specs:{Case:'White Gold',Condition:'Excellent',Year:'c. 1975'}},
-  {id:9,img:'watch16.jpg',imgs:['watch16.jpg'],brand:'Vintage Luxury',name:'Boutique Piece',ref:'Limited',price:'Price on request',desc:'A rare boutique edition from our carefully curated collection. Available for the discerning collector.',specs:{Condition:'Very Good',Year:'Vintage'}},
-  {id:10,img:'watch17.jpg',imgs:['watch17.jpg'],brand:'Vacheron Constantin',name:'Mesh Bracelet',ref:'Vintage',price:'Price on request',desc:'A distinguished Vacheron Constantin with an elegant integrated mesh bracelet. One of the great names in fine watchmaking.',specs:{Brand:'Vacheron Constantin',Case:'Yellow Gold',Bracelet:'Mesh integrated',Condition:'Excellent',Year:'c. 1970s'}},
-  {id:11,img:'watch18.jpg',imgs:['watch18.jpg'],brand:'Estate Collection',name:'Holiday Special',ref:'2025',price:'Price on request',desc:'A pristine piece from our 2025 estate collection. In immaculate condition and ready for a new chapter.',specs:{Condition:'Mint',Year:'2025 Acquisition'}},
+  {id:0,gender:'Homme',img:'watch03.jpg',imgs:['watch03.jpg','watch04.jpg'],brand:'Patek Philippe',name:'Calatrava · Blue Dial',ref:'Ref. 5119J',price:'Price on request',desc:'A superb example of the timeless Patek Philippe Calatrava, featuring a stunning sunburst blue dial with an integrated mesh bracelet. A rare find in this condition.',specs:{Movement:'Manual wind',Case:'18k White Gold',Dial:'Blue sunburst',Bracelet:'Gold mesh integrated',Year:'c. 1970s',Condition:'Excellent',Papers:'Yes — Full Set'}},
+  {id:1,gender:'Femme',img:'watch04.jpg',imgs:['watch04.jpg','watch03.jpg'],brand:'Audemars Piguet',name:'Diamond Lattice Dial',ref:'Estate Piece',price:'Price on request',desc:'A rare Audemars Piguet in 18k yellow gold with an extraordinary hand-engraved diamond lattice dial. An exceptional estate piece of the highest order.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Hand-engraved diamond lattice',Year:'c. 1960s',Condition:'Very Good',Papers:'No'}},
+  {id:2,gender:'Homme',img:'watch05.jpg',imgs:['watch05.jpg'],brand:'Patek Philippe',name:'Golden Ellipse',ref:'Ref. 3548',price:'Price on request',desc:'The iconic Patek Philippe Golden Ellipse with a dark gradient dial. One of the most elegant watch designs of the 20th century.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Dark gradient',Year:'c. 1980s',Condition:'Excellent',Papers:'Box only'}},
+  {id:3,gender:'Homme',img:'watch06.jpg',imgs:['watch06.jpg'],brand:'Patek Philippe',name:'Calatrava · Yellow Gold',ref:'Vintage',price:'Price on request',desc:'A classic Patek Philippe Calatrava in yellow gold with a beautiful sunburst dial. Pure elegance distilled into a perfect dress watch.',specs:{Movement:'Manual wind',Case:'18k Yellow Gold',Dial:'Sunburst',Year:'c. 1975',Condition:'Good — serviced',Papers:'No'}},
+  {id:4,gender:'Unisex',img:'watch07.jpg',imgs:['watch07.jpg'],brand:'Audemars Piguet',name:'Dazzle Duo',ref:'Estate',price:'Price on request',desc:'A stunning bicolor Audemars Piguet with diamond-set bezel. Where glamour meets horological excellence.',specs:{Movement:'Quartz',Case:'Bicolor steel & gold',Dial:'White diamond',Bracelet:'Integrated bicolor',Year:'c. 1985',Condition:'Excellent'}},
+  {id:5,gender:'Femme',img:'watch08.jpg',imgs:['watch08.jpg'],brand:'Audemars Piguet',name:'Diamond Pavé',ref:'Estate',price:'Price on request',desc:'Full diamond pavé Audemars Piguet in 18k yellow gold. An extraordinary example of haute horlogerie meets haute joaillerie.',specs:{Movement:'Quartz',Case:'18k Yellow Gold, diamond-set',Dial:'Full diamond pavé',Year:'c. 1990',Condition:'Mint'}},
+  {id:6,gender:'Femme',img:'watch09.jpg',imgs:['watch09.jpg'],brand:'Vintage Luxury',name:'Yellow Gold Classic',ref:'Estate',price:'Price on request',desc:'A refined vintage dress watch from a prestigious estate collection. Understated elegance at its finest.',specs:{Year:'c. 1965',Condition:'Good',Case:'18k Yellow Gold'}},
+  {id:7,gender:'Femme',img:'watch10.jpg',imgs:['watch10.jpg'],brand:'Vintage Luxury',name:'Yellow Gold Dress',ref:'Estate',price:'Price on request',desc:'Elegant vintage dress watch with textured dial and integrated mesh bracelet. A quintessential piece from the golden age of watchmaking.',specs:{Year:'c. 1970',Condition:'Good',Case:'Yellow Gold',Bracelet:'Mesh integrated'}},
+  {id:8,gender:'Homme',img:'watch14.jpg',imgs:['watch14.jpg'],brand:'Vintage Luxury',name:'Classic Dress Watch',ref:'Estate',price:'Price on request',desc:'A pristine vintage dress watch in white gold with a clean, minimalist dial. Timeless refinement.',specs:{Case:'White Gold',Condition:'Excellent',Year:'c. 1975'}},
+  {id:9,gender:'Femme',img:'watch16.jpg',imgs:['watch16.jpg'],brand:'Vintage Luxury',name:'Boutique Piece',ref:'Limited',price:'Price on request',desc:'A rare boutique edition from our carefully curated collection. Available for the discerning collector.',specs:{Condition:'Very Good',Year:'Vintage'}},
+  {id:10,gender:'Unisex',img:'watch17.jpg',imgs:['watch17.jpg'],brand:'Vacheron Constantin',name:'Mesh Bracelet',ref:'Vintage',price:'Price on request',desc:'A distinguished Vacheron Constantin with an elegant integrated mesh bracelet. One of the great names in fine watchmaking.',specs:{Brand:'Vacheron Constantin',Case:'Yellow Gold',Bracelet:'Mesh integrated',Condition:'Excellent',Year:'c. 1970s'}},
+  {id:11,gender:'Femme',img:'watch18.jpg',imgs:['watch18.jpg'],brand:'Estate Collection',name:'Holiday Special',ref:'2025',price:'Price on request',desc:'A pristine piece from our 2025 estate collection. In immaculate condition and ready for a new chapter.',specs:{Condition:'Mint',Year:'2025 Acquisition'}},
 ];
 
 // Get watch id from URL
@@ -391,6 +392,7 @@ document.getElementById('detailBrand').textContent = watch.brand;
 document.getElementById('detailName').textContent = watch.name;
 document.getElementById('detailRef').textContent = watch.ref;
 document.getElementById('detailPrice').textContent = watch.price;
+document.getElementById('detailGender').textContent = watch.gender || '';
 document.getElementById('detailDesc').textContent = watch.desc;
 document.getElementById('modalWatchName').textContent = watch.name;
 document.getElementById('modalWatchRef').value = watch.ref;
@@ -462,3 +464,4 @@ function submitEnquiry(e){
 </footer>
 </body>
 </html>
+
