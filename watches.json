@@ -3,16 +3,6 @@
     "id": 0,
     "img": "watch03.jpg",
     "brand": "Patek Philippe",
-    "name": "Calatrava \u00b7 Blue Dial",
-    "desc": "18k White Gold \u00b7 Sunburst Blue Dial \u00b7 Integrated Mesh Bracelet \u00b7 Manual Wind",
-    "price": "$28,500",
-    "sold": false,
-    "year": "c.1970"
-  },
-  {
-    "id": 0,
-    "img": "watch03.jpg",
-    "brand": "Patek Philippe",
     "name": "Calatrava · Blue Dial",
     "desc": "18k White Gold · Sunburst Blue Dial · Integrated Mesh Bracelet · Manual Wind",
     "price": "$28,500",
