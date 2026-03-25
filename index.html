@@ -45,7 +45,6 @@
 }
 </script>
 
-<meta name="description" content="Carefully curated luxury and vintage timepieces. Patek Philippe, Audemars Piguet, Rolex and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -676,7 +675,7 @@ fetch('/api/watches')
     var active = watches.filter(function(w){return !w.sold;}).slice(0,4);
     document.getElementById('watchGrid').innerHTML = active.map(function(w){
       return '<div class="watch-card" onclick="location.href=\'watch.html?id='+w.id+'\'">'
-        +'<img src="images/'+w.img+'" loading="lazy">'
+        +'<img src="images/'+w.img+'" loading="lazy" alt="'+w.brand+' '+w.model+'">'
         +'<div class="watch-info">'
         +'<p class="watch-brand">'+w.brand+'</p>'
         +(w.year ? '<p class="watch-year">'+w.year+'</p>' : '')
