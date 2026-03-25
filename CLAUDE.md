@@ -62,3 +62,35 @@
 2. Attendre validation avant de modifier
 3. Corriger → vérifier que ça fonctionne
 4. Confirmer avec preuve (curl, grep, test live)
+
+## Règles d'économie de tokens
+
+RÉPONSES :
+- Sois concis — pas de phrases d'introduction inutiles
+- Pas de "Je vais maintenant..." ou "Bien sûr, je vais..."
+- Réponds directement sans reformuler la question
+- Utilise des listes courtes plutôt que des paragraphes
+
+CODE :
+- Ne montre que les lignes modifiées, pas tout le fichier
+- Utilise diff format quand possible (+/- lignes)
+- Ne répète pas le code déjà montré
+
+CONFIRMATION :
+- Pour les petites tâches, juste "✅ fait" suffit
+- Pas besoin d'expliquer chaque étape évidente
+
+## Règle gestion contexte
+
+RÈGLE ABSOLUE :
+- /compact toutes les 10 messages
+- /clear entre chaque projet différent
+- Ne jamais laisser le contexte dépasser 50k tokens
+- Vérifier avec /tokens avant chaque grosse tâche
+
+## Règle lecture de fichiers
+
+Ne jamais lire un fichier entier — utilise toujours :
+- grep -n "terme" fichier (chercher)
+- sed -n '10,50p' fichier (lire lignes 10-50 seulement)
+- wc -l fichier (compter les lignes avant de lire)

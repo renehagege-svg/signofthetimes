@@ -1,0 +1,4 @@
+CLAUDE.md
+admin_api.py
+*.pyc
+__pycache__
