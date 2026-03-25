@@ -1,244 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Collection — Sign Of Times</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root{--black:#0a0a0a;--dark:#111;--darker:#161616;--peach:#E8C4A0;--white:#F9F5F0;--gray:#888880;--border:rgba(232,196,160,0.15);--gold:#F6961B;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:#161616;color:#F9F5F0;font-family:'Montserrat',sans-serif;font-weight:300;}
-
-  nav{position:fixed;top:0;width:100%;z-index:100;padding:6px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(246,150,27,0.3);}
-  .nav-logo img{height:90px;width:auto;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
-  .nav-back{color:#F6961B;text-decoration:none;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s;}
-  .nav-back:hover{opacity:1;color:#fff;}
-
-  .page-hero{
-    position:relative;
-    padding:180px 60px 80px;
-    background:url('images/watch02.jpg') center/cover no-repeat;
-    overflow:hidden;
-    text-align:center;
-  }
-  .page-hero::before{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(to bottom,rgba(10,10,10,.6) 0%,rgba(10,10,10,.85) 100%);
-  }
-  .page-hero>*{position:relative;z-index:1;}
-  .eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-  h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;line-height:1.1;color:#fff;}
-  h1 em{font-style:italic;color:rgba(249,245,240,0.6);}
-  .sub{margin-top:14px;font-size:12px;color:rgba(249,245,240,0.5);line-height:1.8;max-width:460px;}
-
-  .collection-grid{padding:48px 60px 80px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-
-  .watch-card{cursor:pointer;overflow:hidden;}
-  .watch-card img{width:100%;aspect-ratio:4/3.15;object-fit:cover;transition:transform .5s ease;display:block;}
-  .watch-card:hover img{transform:scale(1.04);}
-  .watch-info{padding:14px 4px 20px;display:flex;flex-direction:column;flex:1;}
-  .watch-brand{font-size:9px;letter-spacing:.2em;color:#F6961B;text-transform:uppercase;margin-bottom:4px;}
-  .watch-year{font-size:9px;letter-spacing:.1em;color:rgba(246,150,27,0.5);margin-bottom:6px;font-style:italic;}
-  .watch-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:6px;line-height:1.3;color:#FFFFFF;}
-  .watch-desc-full{font-size:11px;color:rgba(249,245,240,0.55);line-height:1.7;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(11px * 1.7 * 3);}
-  .watch-price{display:inline-block;font-size:12px;color:#F6961B;margin-top:auto;margin-bottom:12px;letter-spacing:.08em;border:1px solid #F6961B;padding:5px 14px;transition:all .2s;cursor:pointer;text-decoration:none;align-self:flex-start;}
-  .watch-price:hover{background:rgba(246,150,27,.65);color:#fff;border-color:#F6961B;transform:scale(1.03);}
-  .watch-enquire-btn{display:inline-block;padding:8px 20px;border:1px solid #F6961B;color:#0a0a0a;font-size:9px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;background:#F6961B;font-weight:500;transition:background .2s;}
-  .watch-enquire-btn:hover{background:#e0850a;border-color:#e0850a;}
-
-  footer{padding:32px 60px;background:#0a0a0a;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);}
-  footer img{height:40px;opacity:.7;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
-  footer p{font-size:11px;color:var(--gray);}
-
-  @media(max-width:900px){nav{padding:6px 20px;}.nav-logo img{height:67px;}.page-hero{padding:140px 20px 60px;}.collection-grid{padding:32px 20px 60px;grid-template-columns:repeat(2,1fr);gap:20px;}}
-  @media(max-width:600px){nav{padding:6px 16px;}.nav-logo img{height:59px;}.collection-grid{grid-template-columns:1fr;gap:16px;}.page-hero{padding:120px 16px 50px;}footer{padding:24px 16px;flex-direction:column;gap:10px;}}
-  nav{
-    position:fixed;top:0;width:100%;z-index:100;
-    padding:16px 32px;
-    display:flex;align-items:center;justify-content:space-between;
-    background:rgba(10,10,10,0.97);backdrop-filter:blur(8px);
-    border-bottom:1px solid rgba(246,150,27,0.3);
-  }
-  .nav-logo img{height:104px;width:auto;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
-  .nav-center{display:flex;gap:36px;list-style:none;}
-  .nav-center a{color:#F6961B;text-decoration:none;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s,color .2s;white-space:nowrap;}
-  .nav-center a:hover{opacity:1;color:#fff;}
-  .nav-right{display:flex;align-items:center;gap:20px;}
-  .nav-search{background:none;border:none;cursor:pointer;padding:4px;transition:opacity .2s,transform .2s;opacity:.85;}
-  .nav-search:hover{opacity:1;transform:scale(1.1);}
-  .nav-lang{position:relative;}
-  .lang-custom{position:relative;cursor:pointer;user-select:none;}
-  .lang-trigger{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid #F6961B;color:#F6961B;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.12em;font-weight:500;background:#000;}
-  .lang-trigger svg{flex-shrink:0;transition:transform .2s;}
-  .lang-custom.open .lang-trigger svg{transform:rotate(180deg);}
-  .lang-dropdown{display:none;position:absolute;top:100%;right:0;background:#000;border:1px solid #F6961B;border-top:none;min-width:100%;z-index:999;}
-  .lang-custom.open .lang-dropdown{display:block;}
-  .lang-option{padding:8px 14px;color:#F6961B;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.12em;font-weight:400;transition:background .15s;}
-  .lang-option:hover{background:#F6961B;color:#000;}
-  .lang-option.active{color:#fff;font-weight:500;}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
-  .close-menu{display:none;}
-  .hamburger span{width:24px;height:1px;background:#F6961B;display:block;}
-
-  /* ── HERO ── */
-  .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
-  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.85) 0%,rgba(10,10,10,.25) 60%,transparent 100%);}
-  .hero-content{position:relative;z-index:2;padding:0 60px 80px;max-width:700px;}
-  .hero-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);margin-bottom:18px;}
-  .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,88px);font-weight:300;line-height:1.05;margin-bottom:24px;}
-  .hero-title em{font-style:italic;color:var(--peach-light);}
-  .hero-sub{font-size:13px;line-height:1.9;color:rgba(249,245,240,.7);margin-bottom:36px;max-width:440px;}
-  .btn-outline{display:inline-block;padding:13px 36px;border:1px solid var(--peach);color:var(--peach);text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;transition:background .3s,color .3s;}
-  .btn-outline:hover{background:var(--peach);color:var(--black);}
-  .btn-solid{display:inline-block;padding:13px 36px;background:#F6961B;color:#0a0a0a;text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;border:1px solid #F6961B;transition:background .3s;}
-  .btn-solid:hover{background:#e0850a;border-color:#e0850a;}
-
-
-
-  /* ── WHO WE ARE ── */
-  .about{padding:48px 60px;background:var(--darker);border:1px solid var(--border);}
-  .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center;}
-  .section-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#F6961B;margin-bottom:16px;}
-  
-  
-  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);font-weight:300;line-height:1.2;margin-bottom:28px;color:#F9F5F0;}
-  .section-title em{font-style:italic;color:var(--peach-light);}
-  .about-body{font-size:16px;line-height:2;color:rgba(249,245,240,0.75);text-align:center;position:relative;padding:40px 40px 80px;}
-  .quote-open{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(246,150,27,.3);line-height:0;vertical-align:-40px;margin-right:6px;display:inline;}
-  .quote-close{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(246,150,27,.3);line-height:0;vertical-align:-40px;margin-left:6px;display:inline;}
-  .about-body::before{content:'';position:absolute;inset:0;z-index:0;border-radius:2px;background:
-    linear-gradient(to right, #161616 0%, rgba(22,22,22,0.75) 40%, rgba(22,22,22,0.35) 75%, rgba(22,22,22,0.6) 100%),
-    url('images/about_bg.jpg') center/cover no-repeat;opacity:0.6;}
-  .about-body>*{position:relative;z-index:1;}
-  .about-body p+p{margin-top:16px;}
-  .about-body em{font-style:italic;color:var(--peach-light);}
-  .about-img{position:relative;}
-  .about-img img{width:100%;aspect-ratio:3/4;object-fit:cover;}
-  .about-img::before{content:'';position:absolute;top:-14px;left:-14px;width:100%;height:100%;border:1px solid var(--border);z-index:-1;}
-
-  /* ── TIMEPIECES ── */
-  .timepieces{padding:48px 60px 40px;background:#161616;}
-  .timepieces-header{max-width:1200px;margin:0 auto 56px;display:flex;justify-content:space-between;align-items:flex-end;}
-  .timepieces-header .section-title{margin-bottom:0;}
-  .tp-sub{font-size:12px;color:#777;letter-spacing:.08em;max-width:280px;text-align:right;line-height:1.7;}
-  .watches-grid{max-width:1600px;margin:0 auto 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  
-  .watch-card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s ease;display:block;}
-  .watch-card:hover img{transform:scale(1.05);}
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  .timepieces-cta{max-width:1200px;margin:0 auto;text-align:center;}
-
-  /* ── 3 PROMO CARDS ── */
-  .promo{padding:48px 60px;background:#161616;overflow:hidden;}
-  .promo-grid{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-  .promo-card{position:relative;overflow:hidden;aspect-ratio:4/5;outline:1.5px solid #F6961B;outline-offset:-1px;}
-  .promo-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.55);}
-  .promo-card:hover img{transform:scale(1.05);filter:brightness(.45);}
-  .promo-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:24px 28px 32px;}
-  .promo-tag{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--peach);margin-bottom:10px;}
-  .promo-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;line-height:1.2;margin-bottom:8px;min-height:62px;display:flex;align-items:flex-end;justify-content:center;}
-  .promo-desc{font-size:11px;color:rgba(249,245,240,.65);line-height:1.7;margin-bottom:20px;}
-  .promo-btn{display:inline-block;padding:10px 24px;border:1px solid rgba(232,196,160,.6);color:var(--peach);font-size:10px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:background .3s,color .3s;}
-  .promo-btn:hover{background:var(--peach);color:var(--black);}
-
-  /* ── BRANDS ── */
-  .brands{padding:60px;background:#161616;border-top:1px solid rgba(232,196,160,0.2);border-bottom:1px solid rgba(232,196,160,0.2);}
-  .brands-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;}
-  .brand-item{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:#888880;letter-spacing:.1em;transition:color .3s;text-decoration:none;display:inline-block;}
-  .brand-item:hover{color:#F6961B;}
-  .brand-item--stack{text-align:center;line-height:1.1;}
-  .brand-item--stack span{display:block;text-align:center;}
-  .brand-sep{width:1px;height:30px;background:rgba(232,196,160,0.2);}
-
-  /* ── FOOTER ── */
-  footer{padding:48px 60px;background:var(--darker);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-  .footer-logo img{height:44px;width:auto;opacity:.85;}
-  .footer-copy{font-size:11px;color:var(--gray);letter-spacing:.06em;}
-  .footer-links{display:flex;gap:24px;}
-  .footer-links a{font-size:11px;color:var(--gray);text-decoration:none;letter-spacing:.1em;transition:color .2s;}
-  .footer-links a:hover{color:var(--peach);}
-
-  /* ── SEARCH OVERLAY ── */
-  .search-overlay{position:fixed;inset:0;background:rgba(10,10,10,.97);z-index:200;display:none;align-items:center;justify-content:center;}
-  .search-overlay.open{display:flex;}
-  .search-box{width:100%;max-width:600px;padding:0 24px;}
-  .search-box input{width:100%;background:none;border:none;border-bottom:1px solid var(--peach);color:var(--white);font-family:'Cormorant Garamond',serif;font-size:32px;padding:16px 0;outline:none;}
-  .search-close{position:absolute;top:32px;right:48px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer;opacity:.7;}
-
-  /* ── MOBILE ── */
-  /* ── TABLET (≤900px) ── */
-  @media(max-width:900px){
-    nav{padding:12px 20px;}
-    .nav-logo img{height:104px;}
-    .nav-center{display:none;}
-    .hamburger{display:flex;}
-    .lang-trigger{padding:5px 10px;font-size:11px;}
-    .lang-dropdown{right:0;}
-    /* Mobile menu overlay */
-    .nav-center{
-      position:fixed;top:0;left:0;right:0;bottom:0;
-      width:100%;height:100dvh;
-      background:#0a0a0a;z-index:500;
-      display:flex;flex-direction:column;
-      align-items:center;justify-content:center;gap:0;
-      transform:translateX(100%);
-      transition:transform .35s cubic-bezier(.77,0,.18,1);
-      list-style:none;
-    }
-    .nav-center.open{transform:translateX(0);}
-    .nav-center li{width:100%;text-align:center;border-bottom:1px solid rgba(246,150,27,.12);}
-    .nav-center li:first-child{border-top:1px solid rgba(246,150,27,.12);}
-    .nav-center a{
-      display:block;padding:22px 40px;
-      font-size:13px;letter-spacing:.25em;text-transform:uppercase;
-      color:#F9F5F0;font-weight:400;
-      transition:color .2s,background .2s;
-    }
-    .nav-center a:hover{color:#F6961B;background:rgba(246,150,27,.05);}
-
-    /* Hamburger → X animation */
-    .hamburger span{transition:transform .3s, opacity .3s;}
-    .hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-    .hamburger.active span:nth-child(2){opacity:0;}
-    .hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-
-    .close-menu{display:none;}
-  </style>
-</head>
-<body>
-
-<nav>
-  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Sign Of Times"></a>
-  <ul class="nav-center" id="navLinks">
-    <li><a href="index.html#timepieces">New Timepieces</a></li>
-    <li><a href="collection.html">The Collection</a></li>
-    <li><a href="index.html#about">What We Are</a></li>
-    <li><a href="index.html#promo">Services</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="nav-lang">
-      <div class="lang-custom" id="langCustom">
-        <div class="lang-trigger" onclick="toggleLangMenu()">
-          <span id="langCurrent">EN</span>
-          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M0 0l5 6 5-6z" fill="#F6961B"/></svg>
-        </div>
-        <div class="lang-dropdown">
-          <div class="lang-option active" onclick="setLang('en')">EN</div>
-          <div class="lang-option" onclick="setLang('fr')">FR</div>
-          <div class="lang-option" onclick="setLang('ru')">RU</div>
-        </div>
-      </div>
     </div>
     <a href="https://www.instagram.com/signofthetimes.watch/" target="_blank" rel="noopener noreferrer" style="color:#F6961B;opacity:.85;transition:opacity .2s;display:flex;align-items:center;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85" aria-label="Instagram">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#F6961B" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#F6961B"/></svg>
@@ -260,6 +20,9 @@
   <p class="sub">Each piece is unique — authenticated, serviced, and ready for its next chapter.</p>
 </div>
 
+  .gender-filters{display:flex;justify-content:center;gap:12px;padding:20px 0;flex-wrap:wrap;}
+  .gender-btn{background:transparent;color:#d4a04a;border:1px solid #d4a04a;padding:8px 24px;font-family:'Cormorant Garamond',serif;font-size:1rem;cursor:pointer;transition:all .3s;letter-spacing:1px;text-transform:uppercase;}
+  .gender-btn:hover,.gender-btn.active{background:#d4a04a;color:#000;}
 <div class="collection-grid" id="collectionGrid"></div>
 
 <footer style="flex-direction:column;align-items:center;gap:16px;">
@@ -277,34 +40,47 @@
   </div>
 </footer>
 
-<script>
-const watches = [
-  {id:0,img:'watch03.jpg',brand:'Patek Philippe',name:'Calatrava · Blue Dial',desc:'18k White Gold · Sunburst Blue Dial · Integrated Mesh Bracelet · Manual Wind',price:'$28,500'},
-  {id:1,img:'watch04.jpg',brand:'Audemars Piguet',name:'Diamond Lattice Dial',desc:'18k Yellow Gold · Extraordinary Hand-Engraved Lattice Dial · Manual Wind · c.1960s',price:'$47,500'},
-  {id:2,img:'watch05.jpg',brand:'Patek Philippe',name:'Golden Ellipse',desc:'18k Yellow Gold · Dark Gradient Dial · Iconic 1968 Design · Manual Wind',price:'$18,000'},
-  {id:3,img:'watch06.jpg',brand:'Patek Philippe',name:'Calatrava · Yellow Gold',desc:'18k Yellow Gold · Sunburst Dial · Classic Dress Watch · Manual Wind · c.1975',price:'$22,500'},
-  {id:4,img:'watch07.jpg',brand:'Audemars Piguet',name:'Dazzle Duo',desc:'Bicolor Steel & Gold · Diamond-Set Bezel · White Diamond Dial · c.1985',price:'$35,000'},
-  {id:5,img:'watch08.jpg',brand:'Audemars Piguet',name:'Diamond Pavé',desc:'18k Yellow Gold · Full Diamond Pavé Case & Dial · Haute Joaillerie · c.1990',price:'$55,000'},
-  {id:6,img:'watch09.jpg',brand:'Vintage Luxury',name:'Yellow Gold Classic',desc:'18k Yellow Gold · Estate Collection · Pristine Vintage Condition · c.1965',price:'$12,500'},
-  {id:7,img:'watch10.jpg',brand:'Vintage Luxury',name:'Yellow Gold Dress',desc:'18k Yellow Gold · Textured Dial · Integrated Mesh Bracelet · Dress Watch · c.1970',price:'$9,800'},
-  {id:8,img:'watch14.jpg',brand:'Vintage Luxury',name:'Classic Dress Watch',desc:'White Gold · Clean Minimalist Dial · The Purest Expression of Vintage Elegance',price:'$14,500'},
-  {id:9,img:'watch16.jpg',brand:'Vintage Luxury',name:'Boutique Piece',desc:'Limited Boutique Edition · Rare Find · Immaculate Condition',price:'$8,900'},
-  {id:10,img:'watch17.jpg',brand:'Vacheron Constantin',name:'Mesh Bracelet',desc:'18k Yellow Gold · Integrated Mesh Bracelet · Hallmark of Fine Watchmaking · c.1970s',price:'$24,000'},
-  {id:11,img:'watch18.jpg',brand:'Estate Collection',name:'Holiday Special',desc:'2025 Acquisition · Mint Condition · Full Documentation Available',price:'$16,500'},
-];
 
-document.getElementById('collectionGrid').innerHTML = watches.map(w=>`
+<div class="gender-filters">
+  <button class="gender-btn active" onclick="filterGender('all')">All</button>
+  <button class="gender-btn" onclick="filterGender('Homme')">Homme</button>
+  <button class="gender-btn" onclick="filterGender('Femme')">Femme</button>
+  <button class="gender-btn" onclick="filterGender('Unisex')">Unisex</button>
+</div>
+<div id="collectionGrid" class="collection-grid"></div>
+<script>
+let watches = [];
+let currentFilter = 'all';
+
+fetch('watches.json')
+  .then(r => r.json())
+  .then(data => {
+    watches = data.filter(w => !w.sold);
+    renderWatches();
+  });
+
+function renderWatches() {
+  const filtered = currentFilter === 'all' ? watches : watches.filter(w => w.gender === currentFilter);
+  document.getElementById('collectionGrid').innerHTML = filtered.map(w => `
   <div class="watch-card" onclick="window.location='watch.html?id=${w.id}'">
     <img src="images/${w.img}" alt="${w.brand} ${w.name}" loading="lazy">
     <div class="watch-info">
       <p class="watch-brand">${w.brand}</p>
-        ${w.year ? `<p class="watch-year">${w.year}</p>` : ''}
+      ${w.year ? `<p class="watch-year">${w.year}</p>` : ''}
       <h3 class="watch-name">${w.name}</h3>
-      <p class="watch-desc-full">${w.desc}</p>
-      <a href="watch.html?id=${w.id}" class="watch-price">${w.price}</a>
+      <span class="watch-gender">${w.gender || ''}</span>
+      <p class="watch-price">${w.price}</p>
     </div>
   </div>
 `).join('');
+}
+
+function filterGender(g) {
+  currentFilter = g;
+  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderWatches();
+}
 </script>
 </body>
 </html>
