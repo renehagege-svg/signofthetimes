@@ -15,9 +15,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            set -e
             cd /var/www/steeve
-            sudo chown -R $(whoami) .git
+            chmod -R u+w .git/objects || true
             git fetch github
             git reset --hard FETCH_HEAD
             echo Deploy OK
