@@ -16,6 +16,6 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /var/www/steeve
-            git fetch github master
-            git reset --hard github/master
+            git fetch github
+            git reset --hard FETCH_HEAD
             echo Deploy OK
