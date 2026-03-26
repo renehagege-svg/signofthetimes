@@ -16,7 +16,11 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /var/www/steeve
-            chmod -R u+w .git/objects || true
-            git fetch github
-            git reset --hard FETCH_HEAD
+            REPO="https://raw.githubusercontent.com/renehagege-svg/signofthetimes/master"
+            curl -sL "$REPO/index.html" -o index.html
+            curl -sL "$REPO/collection.html" -o collection.html
+            curl -sL "$REPO/watches.json" -o watches.json
+            curl -sL "$REPO/admin/index.html" -o admin/index.html
+            curl -sL "$REPO/gone-too-soon.html" -o gone-too-soon.html 2>/dev/null || true
+            curl -sL "$REPO/upgrade-trade.html" -o upgrade-trade.html 2>/dev/null || true
             echo Deploy OK
