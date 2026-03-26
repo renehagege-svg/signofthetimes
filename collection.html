@@ -30,7 +30,7 @@
   .eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
   h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;line-height:1.1;color:#fff;}
   h1 em{font-style:italic;color:rgba(249,245,240,0.6);}
-  .sub{margin-top:14px;font-size:16px;line-height:2;color:rgba(249,245,240,0.5);line-height:1.8;max-width:460px;}
+  .sub{margin-top:14px;font-size:16px;line-height:1.8;color:rgba(249,245,240,0.75);max-width:600px;margin:14px auto 0;}
 
   .collection-grid{padding:48px 60px 80px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
 
@@ -304,6 +304,7 @@ function renderWatches() {
       <p class="watch-brand">${w.brand}</p>
       ${w.year ? `<p class="watch-year">${w.year}</p>` : ''}
       <h3 class="watch-name">${w.name}</h3>
+      <p class="watch-desc-full">${w.desc}</p>
       <span class="watch-gender" style="color:#d4a04a;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;">${w.gender || ''}</span>
       <p class="watch-price">${w.price}</p>
     </div>
