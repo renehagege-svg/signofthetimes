@@ -218,6 +218,8 @@ tr:hover td{background:#0f0f0f;}
             <option value="true">Sold</option>
           </select>
         </div>
+    <div class="form-group"><label>Gender</label><select id="fGender"><option value="Homme">Homme</option><option value="Femme">Femme</option><option value="Unisex">Unisex</option></select></div>
+    <div class="form-group"><label>Date Added</label><input type="date" id="fDateAdded"></div>
       </div>
       </div>
       <div class="form-group">
@@ -309,6 +311,8 @@ function openAddModal(){
   ['fBrand','fName','fDesc','fPrice','fImgName','fYear'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('fSold').value = 'false';
   document.getElementById('previewImg').style.display = 'none';
+  document.getElementById('fGender').value = w.gender||'Homme';
+  document.getElementById('fDateAdded').value = w.dateAdded||'';
   document.getElementById('watchModal').classList.add('open');
 }
 
@@ -346,6 +350,8 @@ async function saveWatch(){
     price:document.getElementById('fPrice').value,
     img:document.getElementById('fImgName').value,
     sold:document.getElementById('fSold').value==='true',
+    gender:document.getElementById('fGender').value,
+    dateAdded:document.getElementById('fDateAdded').value||new Date().toISOString().slice(0,10),
     year:document.getElementById('fYear').value
   };
   const fi = document.getElementById('fImgFile');
