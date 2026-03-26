@@ -671,7 +671,7 @@ function setLang(l){
 
 // ── Watch data ────────────────────────────────────────────
 // Load watches from API
-fetch('/api/watches')
+fetch('/watches.json')
   .then(r=>r.json())
   .then(function(watches){
     var now=new Date();var active=watches.filter(function(w){if(w.sold)return false;if(!w.dateAdded)return true;var d=new Date(w.dateAdded);return(now-d)<30*24*60*60*1000;}).slice(0,4);
@@ -715,7 +715,7 @@ document.querySelectorAll('.nav-center a').forEach(a=>{
 
 // ── Search ────────────────────────────────────────────────
 var searchData=[];
-fetch('/api/watches').then(r=>r.json()).then(function(w){searchData=w;});
+fetch('/watches.json').then(r=>r.json()).then(function(w){searchData=w;});
 function openSearch(){
   document.getElementById('searchOverlay').classList.add('open');
   setTimeout(function(){document.getElementById('searchInput').focus();},100);
