@@ -673,7 +673,7 @@ function setLang(l){
 fetch('/api/watches')
   .then(r=>r.json())
   .then(function(watches){
-    var active = watches.filter(function(w){return !w.sold;}).slice(0,4);
+    var now=new Date();var active=watches.filter(function(w){if(w.sold)return false;if(!w.dateAdded)return true;var d=new Date(w.dateAdded);return(now-d)<30*24*60*60*1000;}).slice(0,4);
     document.getElementById('watchGrid').innerHTML = active.map(function(w){
       return '<div class="watch-card" onclick="location.href=\'watch.html?id='+w.id+'\'">'
         +'<img src="images/'+w.img+'" loading="lazy" alt="'+w.brand+' '+w.model+'">'
