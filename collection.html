@@ -30,7 +30,7 @@
   .eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
   h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;line-height:1.1;color:#fff;}
   h1 em{font-style:italic;color:rgba(249,245,240,0.6);}
-  .sub{margin-top:14px;font-size:12px;color:rgba(249,245,240,0.5);line-height:1.8;max-width:460px;}
+  .sub{margin-top:14px;font-size:16px;line-height:2;color:rgba(249,245,240,0.5);line-height:1.8;max-width:460px;}
 
   .collection-grid{padding:48px 60px 80px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
 
@@ -38,10 +38,11 @@
   .watch-card img{width:100%;aspect-ratio:4/3.15;object-fit:cover;transition:transform .5s ease;display:block;}
   .watch-card:hover img{transform:scale(1.04);}
   .watch-info{padding:14px 4px 20px;display:flex;flex-direction:column;flex:1;}
-  .watch-brand{font-size:9px;letter-spacing:.2em;color:#F6961B;text-transform:uppercase;margin-bottom:4px;}
-  .watch-year{font-size:9px;letter-spacing:.1em;color:rgba(246,150,27,0.5);margin-bottom:6px;font-style:italic;}
+  .watch-brand{font-size:13.5px;letter-spacing:.2em;color:#F6961B;text-transform:uppercase;margin-bottom:4px;}
+  .watch-year{font-size:13.5px;letter-spacing:.1em;color:rgba(246,150,27,0.5);margin-bottom:6px;font-style:italic;}
   .watch-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:6px;line-height:1.3;color:#FFFFFF;}
-  .watch-desc-full{font-size:11px;color:rgba(249,245,240,0.55);line-height:1.7;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(11px * 1.7 * 3);}
+  .watch-gender{display:none;}
+  .watch-desc-full{font-size:13px;color:rgba(249,245,240,0.55);line-height:1.7;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(11px * 1.7 * 3);}
   .watch-price{display:inline-block;font-size:12px;color:#F6961B;margin-top:auto;margin-bottom:12px;letter-spacing:.08em;border:1px solid #F6961B;padding:5px 14px;transition:all .2s;cursor:pointer;text-decoration:none;align-self:flex-start;}
   .watch-price:hover{background:rgba(246,150,27,.65);color:#fff;border-color:#F6961B;transform:scale(1.03);}
   .watch-enquire-btn{display:inline-block;padding:8px 20px;border:1px solid #F6961B;color:#0a0a0a;font-size:9px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;background:#F6961B;font-weight:500;transition:background .2s;}
@@ -62,7 +63,7 @@
   }
   .nav-logo img{height:104px;width:auto;filter:brightness(0) saturate(100%) invert(57%) sepia(100%) saturate(900%) hue-rotate(-2deg) brightness(103%);}
   .nav-center{display:flex;gap:36px;list-style:none;}
-  .nav-center a{color:#F6961B;text-decoration:none;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s,color .2s;white-space:nowrap;}
+  .nav-center a{color:#F6961B;text-decoration:none;font-size:13.2px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;opacity:.9;transition:opacity .2s,color .2s;white-space:nowrap;}
   .nav-center a:hover{opacity:1;color:#fff;}
   .nav-right{display:flex;align-items:center;gap:20px;}
   .nav-search{background:none;border:none;cursor:pointer;padding:4px;transition:opacity .2s,transform .2s;opacity:.85;}
@@ -265,12 +266,7 @@
   <p class="sub">Each piece is unique — authenticated, serviced, and ready for its next chapter.</p>
 </div>
 
-<div class="gender-filters">
-  <button class="gender-btn active" onclick="filterGender('all')">All</button>
-  <button class="gender-btn" onclick="filterGender('Homme')">Homme</button>
-  <button class="gender-btn" onclick="filterGender('Femme')">Femme</button>
-  <button class="gender-btn" onclick="filterGender('Unisex')">Unisex</button>
-</div>
+
 <div class="collection-grid" id="collectionGrid"></div>
 
 <footer style="flex-direction:column;align-items:center;gap:16px;">
@@ -315,12 +311,7 @@ function renderWatches() {
 `).join('');
 }
 
-function filterGender(g) {
-  currentFilter = g;
-  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  renderWatches();
-}
+
 </script>
 </body>
 </html>
