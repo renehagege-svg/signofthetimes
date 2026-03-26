@@ -16,11 +16,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /var/www/steeve
-            REPO="https://raw.githubusercontent.com/renehagege-svg/signofthetimes/master"
-            curl -sL "$REPO/index.html" -o index.html
-            curl -sL "$REPO/collection.html" -o collection.html
-            curl -sL "$REPO/watches.json" -o watches.json
-            curl -sL "$REPO/admin/index.html" -o admin/index.html
-            curl -sL "$REPO/gone-too-soon.html" -o gone-too-soon.html 2>/dev/null || true
-            curl -sL "$REPO/upgrade-trade.html" -o upgrade-trade.html 2>/dev/null || true
+            API="https://api.github.com/repos/renehagege-svg/signofthetimes/contents"
+            for f in index.html collection.html watches.json; do
+              curl -sL "$API/$f" | python3 -c "import sys,json,base64; d=json.load(sys.stdin); sys.stdout.buffer.write(base64.b64decode(d['content']))" > "$f"
+            done
+            curl -sL "$API/admin/index.html" | python3 -c "import sys,json,base64; d=json.load(sys.stdin); sys.stdout.buffer.write(base64.b64decode(d['content']))" > admin/index.html
             echo Deploy OK
