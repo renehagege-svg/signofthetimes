@@ -331,7 +331,7 @@
   /* DECADES GRID */
   .decades-section{padding:0 0 80px;}
   .decades-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(246,150,27,0.15);}
-  .decade-card{position:relative;display:block;padding:36px;background:#2a2a2a;text-decoration:none;transition:background .3s;cursor:pointer;height:260px;box-sizing:border-box;}
+  .decade-card{position:relative;display:block;padding:36px;background:#2a2a2a;text-decoration:none;transition:background .3s;cursor:pointer;min-height:300px;box-sizing:border-box;}
   .decade-card:hover{background:#353535;}
   .decade-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:rgba(249,245,240,0.25);line-height:1;letter-spacing:-.02em;position:absolute;top:24px;left:28px;pointer-events:none;user-select:none;}
   .decade-num em{font-style:italic;color:rgba(246,150,27,0.2);}
@@ -371,7 +371,6 @@
   <ul class="nav-center" id="navLinks">
     <li><a href="#timepieces">New Timepieces</a></li>
     <li><a href="collection.html">The Collection</a></li>
-    <li><a href="#timemachine">The Time Machine</a></li>
     <li><a href="#about">What We Are</a></li>
     <li><a href="#promo">Services</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -451,8 +450,8 @@
 </section>
 
 <!-- DECADES -->
-<section class="decades-section" id="timemachine">
-  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:#F9F5F0;text-align:left;padding:60px 0 40px 5%;letter-spacing:.05em;">The Time <em style='color:#d4a04a;'>Machine</em></h2>
+<section class="decades-section">
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:#F9F5F0;text-align:center;padding:60px 0 40px;letter-spacing:.05em;">The Time <em style='color:#d4a04a;'>Machine</em></h2>
   <div class="decades-grid">
     <a href="decades.html?d=50s" class="decade-card">
       <span class="decade-num">50<em>s</em></span>
